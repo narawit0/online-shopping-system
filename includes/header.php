@@ -35,15 +35,28 @@
                         <span>10</span>
                     </div>
                 </div>
-                <?php if(isset($_SESSION['first_name'])) {
-                    echo $_SESSION['first_name'];
-                } else { ?>
                 <div class="user">
-                    <a href="register.php" class="user--register">สมัครสมาชิก</a>
-                    <span>หรือ</span>
-                    <a href="register.php" class="user--register">เข้าสู่ระบบ</a>
+                    <?php if(isset($_SESSION['first_name'])) {
+                    ?>
+                    <ul>
+                        <li class="user--name"><a href="javascript:void(0)">
+                        <svg class="icon icon-user">
+                                <use xlink:href="img/sprite.svg#icon-user">
+                            </svg>
+                            <?php echo $_SESSION['first_name']; ?></a>
+                            <ul class="dropdown-list">
+                                <li><a href="profile.php">Profile</a></li>
+                                <li><a href="logout.php">Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <?php
+                    } else { ?>
+                        <a href="register.php" class="user--register">สมัครสมาชิก</a>
+                        <span>หรือ</span>
+                        <a href="login.php" class="user--register">เข้าสู่ระบบ</a>
+                    <?php } ?>
                 </div>
-                <?php } ?>
             </nav>
         </div>
         <nav class="navigation-2">

@@ -28,13 +28,13 @@
             $the_object_array = array();
 
             while($row = mysqli_fetch_assoc($result_set)) {
-                $the_object_array[] = $this->instantiation($row);
+                $the_object_array[] = User::instantiation($row);
             }
 
             return $the_object_array;
         }
 
-        public function instantiation($the_record) {
+        public static function instantiation($the_record) {
             $the_object = new self;
 
             foreach($the_record as $key => $value) {
@@ -56,17 +56,19 @@
             $this->hashed_password = password_hash($this->password, PASSWORD_BCRYPT, array('cost' => 10));
         }
 
-        public function verify_user($username, $password) {
+        public static function verify_user($username, $password) {
             global $database;
             global $session;
 
             $sql = "SELECT * FROM users WHERE username = '{$username}'";
-            $the_result_array = $this->find_by_query($sql);
+            $the_result_array = self::find_by_query($sql);
             $user_object = array_shift($the_result_array);
 
             if (password_verify($password, $user_object->password)) {
                 $session->set_user_login_session($user_object);
                 return true;
+            } else {
+                return false;
             }
         }
     }

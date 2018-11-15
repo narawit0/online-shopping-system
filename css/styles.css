@@ -35,6 +35,10 @@ a {
     text-decoration: none;
 }
 
+li {
+    list-style-type: none;
+}
+
 .container {
     max-width: 96rem;
     margin: 0 auto;
@@ -121,11 +125,18 @@ a {
     height: 2rem;
 }
 
+.icon.icon-user {
+    fill: var(--color-grey-dark-1);
+    margin-right: 1rem;
+    width: 2rem;
+    height: 2rem;
+}
+
 /* CART */
 
 .cart {
     position: relative;
-    margin-right: 3rem;
+    margin-right: 10rem;
 }
 
 .cart--count {
@@ -150,7 +161,23 @@ a {
     font-size: 1.2rem;
 }
 
-/* REGISTER */
+/* USER DISPLAY AND REGIST BUTTON*/
+.user {
+    position: relative;
+}
+
+
+.user--name a{
+    color: var(--color-grey-dark-1);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.user--name:hover > .dropdown-list {
+    visibility: visible;
+    opacity: 1;
+}
 .user--register {
     color: var(--color-grey-dark-1);
     display: inline-block;
@@ -162,6 +189,31 @@ a {
 .user > span {
     color: var(--color-white);
 }
+
+.user .dropdown-list {
+    background-color: var(--color-white);
+    position: absolute;
+    right: 0;
+    top: 3rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s;
+}
+
+.user .dropdown-list li:hover {
+    background-color: var(--color-grey-dark-2);
+}
+
+.user .dropdown-list li:hover a {
+    color: var(--color-white);
+}
+
+.user .dropdown-list a {
+    display: inline-block;
+    min-width: 16rem;
+    padding: 1.2rem 1.6rem;
+}
+
 
 /* CATEGORY SECTION*/
 
@@ -252,3 +304,18 @@ a {
     margin-bottom: 2rem;
 }
 
+/* LOGIN FORM */
+.login-form {
+    margin-top: 2rem;
+    border: 2px solid var(--color-primary-dark);
+    background-color: var(--color-grey-dark-1);
+    padding: 5rem 10rem;
+}
+
+.login-form > form > button {
+    cursor: pointer;
+    border: none;
+    background-color: var(--color-secondary-dark);
+    padding: 2rem;
+    border-radius: 2rem;
+}

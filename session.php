@@ -11,6 +11,14 @@
                 $_SESSION['last_name'] = $user->last_name;
             }
         }
+
+
+        public function set_user_logout_session() {
+            $_SESSION['username'] = "";
+            $_SESSION['first_name'] = "";
+            $_SESSION['last_name'] = "";
+            session_destroy();
+        }
     }
 
     $session = new Session();

@@ -16,7 +16,7 @@
         } else {
             $user->hashed_password();
             $user->create_user();
-            if($user->verify_user($user->username, $user->password)) {
+            if(User::verify_user($user->username, $user->password)) {
                 header("Location: index.php");
             }
 
@@ -26,9 +26,12 @@
 ?>
 <div class="container">
 <div class="register-form">
-        <div class="warning-message">
-            <?php if(isset($message)) echo $message; ?>
-        </div>
+        <?php if(isset($message)) {
+            echo "<div class='warning-message'>";
+            echo $message;
+            echo "</div>";
+        }
+        ?>
         <form action="" method="POST">
             <div class="form-group">
                 <label for="first_name">ชื่อ</label>

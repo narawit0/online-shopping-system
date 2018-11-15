@@ -5,15 +5,30 @@
         $user->first_name   = $_POST['first_name'];
         $user->last_name    = $_POST['last_name'];
         $user->username     = $_POST['username'];
+        $user->password     = $_POST['password'];
         $user->email        = $_POST['email'];
         $user->phone        = $_POST['phone'];
         $user->address      = $_POST['address'];
-        $user->create_user();
+
+        
+        if($user->check_duplicate_user() > 0) {
+            $message = "Email หรือ Username นี้ถูกใช้ไปใช้แล้วกรุณากรอกข้อมูลใหม่อีกครั้ง";
+        } else {
+            $user->hashed_password();
+            $user->create_user();
+            if($user->verify_user($user->username, $user->password)) {
+                header("Location: index.php");
+            }
+
+        }
     
     }
 ?>
 <div class="container">
 <div class="register-form">
+        <div class="warning-message">
+            <?php if(isset($message)) echo $message; ?>
+        </div>
         <form action="" method="POST">
             <div class="form-group">
                 <label for="first_name">ชื่อ</label>
@@ -32,7 +47,7 @@
 
             <div class="form-group">
                 <label for="password">รหัสผ่าน</label>
-                <input type="password" name="password" class="form-control" required>
+                <input type="password" name="password"  class="form-control" required>
             </div>
 
             <div class="form-group">

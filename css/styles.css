@@ -199,7 +199,7 @@ a {
     margin-top: 2rem;
     border: 2px solid var(--color-primary-dark);
     background-color: var(--color-grey-dark-1);
-    padding: 10rem;
+    padding: 5rem 10rem;
 }
 
 .register-form > form {
@@ -241,5 +241,14 @@ a {
     background-color: var(--color-secondary-dark);
     padding: 2rem;
     border-radius: 2rem;
+}
+
+/* WARNING MESSAGE */
+
+.warning-message {
+    background-color: var(--color-primary-dark) !important;
+    color: var(--color-white);
+    padding: 3rem;
+    margin-bottom: 2rem;
 }
 

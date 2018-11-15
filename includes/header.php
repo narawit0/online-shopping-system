@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php require_once("init.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,11 +35,15 @@
                         <span>10</span>
                     </div>
                 </div>
+                <?php if(isset($_SESSION['first_name'])) {
+                    echo $_SESSION['first_name'];
+                } else { ?>
                 <div class="user">
                     <a href="register.php" class="user--register">สมัครสมาชิก</a>
                     <span>หรือ</span>
                     <a href="register.php" class="user--register">เข้าสู่ระบบ</a>
                 </div>
+                <?php } ?>
             </nav>
         </div>
         <nav class="navigation-2">

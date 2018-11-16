@@ -103,12 +103,18 @@ li {
 .navigation-1 {
     display: flex;
     align-items: center;
-    padding: 2rem 0;
+    padding: 3rem 0;
 }
 
 .navigation-2 {
     background-color: var(--color-grey-dark-1);
     padding: 1rem 0;
+}
+
+.navigation-2 > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* ICON */
@@ -251,13 +257,20 @@ li {
     margin-top: 2rem;
     border: 2px solid var(--color-primary-dark);
     background-color: var(--color-grey-dark-1);
-    padding: 5rem 10rem;
+    padding: 0 10rem 5rem 10rem;
 }
 
 .register-form > form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 2rem;
+}
+
+.register-title, .login-title, .seller-title {
+    border-bottom: 2px solid var(--color-primary-dark);
+    padding: 2rem 0;
+    color: var(--color-white);
+    font-weight: bold;
 }
 
 .form-group {
@@ -318,4 +331,22 @@ li {
     background-color: var(--color-secondary-dark);
     padding: 2rem;
     border-radius: 2rem;
+}
+
+.sell-btn {
+    display: inline-block;
+    padding: 1rem;
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    border-radius: 2rem;
+    font-weight: bold;
+}
+
+/* SELLER FORM */
+
+.seller-form {
+    margin-top: 2rem;
+    border: 2px solid var(--color-primary-dark);
+    background-color: var(--color-grey-dark-1);
+    padding: 5rem 10rem;
 }

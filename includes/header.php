@@ -68,6 +68,7 @@
                     <li class="category-item"><a href="">CASE</a></li>
                     <li class="category-item"><a href="">JOY STICK</a></li>
                 </ul>
+                <a href="selling.php" class="sell-btn">อยากขาย</a>
             </div>
         </nav>
 </header>

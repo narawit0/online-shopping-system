@@ -26,6 +26,9 @@
 ?>
 <div class="container">
 <div class="register-form">
+        <div class="register-title">
+            <h4>สมัครสมาชิก</h4>
+        </div>
         <?php if(isset($message)) {
             echo "<div class='warning-message'>";
             echo $message;

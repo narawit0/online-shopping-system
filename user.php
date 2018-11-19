@@ -22,6 +22,16 @@
             $database->query($sql);
         }
 
+        public static function find_user_by_id($id) {
+            global $database;
+
+            $sql = "SELECT * FROM users WHERE id = {$id}";
+            $the_result_array = self::find_by_query($sql);
+
+            return array_shift($the_result_array);
+
+        }
+
         public function find_by_query($sql) {
             global $database;
             $result_set = $database->query($sql);
@@ -70,6 +80,21 @@
             } else {
                 return false;
             }
+        }
+
+        public function update_user_profile(){
+            global $database;
+
+            $sql  = "UPDATE users SET ";
+            $sql .= "first_name = '{$this->first_name}', ";
+            $sql .= "last_name  = '{$this->last_name}', ";
+            $sql .= "password   = '{$this->hashed_password}', ";
+            $sql .= "phone      = '{$this->phone}', ";
+            $sql .= "address    = '{$this->address}' WHERE id = {$this->id}";
+
+            $database->query($sql);
+
+            return (mysqli_affected_rows($database->connection) == 1) ? true : false;
         }
     }
 ?>

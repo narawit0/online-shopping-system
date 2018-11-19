@@ -62,11 +62,14 @@
         <nav class="navigation-2">
             <div class="container">
                 <ul class="category">
-                    <li class="category-item"><a href="">CPU</a></li>
-                    <li class="category-item"><a href="">MOUSE</a></li>
-                    <li class="category-item"><a href="">KEYBOARD</a></li>
-                    <li class="category-item"><a href="">CASE</a></li>
-                    <li class="category-item"><a href="">JOY STICK</a></li>
+                    <?php 
+                        $categories = Product::select_all_categories();
+                        while($row = mysqli_fetch_assoc($categories)) {
+                    ?>
+                        <li class="category-item"><a href="index.php?cat_id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></li>
+                    <?php
+                        } 
+                    ?>
                 </ul>
                 <a href="selling.php" class="sell-btn">อยากขาย</a>
             </div>

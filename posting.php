@@ -6,6 +6,8 @@
         $product->product_price       = $_POST['product_price'];
         $product->product_quanity     = $_POST['product_quanity'];
         $product->product_desc        = $_POST['product_desc'];
+        $product->product_category    = $_POST['product_category'];
+
         $product->set_file($_FILES['file_upload']);
         $seller_id = $_SESSION['id'];
 
@@ -53,6 +55,17 @@
             <div class="form-group">
                 <label for="product_desc">คำอธิบายสินค้า</label>
                 <textarea id="" cols="30" rows="10" name="product_desc" class="form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+                <select name="product_category" id="" class="form-control">
+                <?php 
+                    $categories = Product::select_all_categories(); 
+                    while($row = mysqli_fetch_assoc($categories)) {
+                        echo "<option value='$row[id]'>{$row[name]}</option>";
+                    }
+                ?>
+                </select>
             </div>
 
             <button type="submit" name="add_product">เพิ่มสินค้า</button>

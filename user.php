@@ -10,7 +10,7 @@
         public $address;
         public $role;
         public $status;
-        private $hashed_password;
+        public $hashed_password;
 
         public function create_user() {
             global $database;

@@ -23,7 +23,7 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%; /* 1rem = 10px */
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -238,7 +238,7 @@ li {
 .category-item > a {
     display: inline-block;
     padding: 0.8rem 0;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     color: var(--color-white);
     transition: color .2s ,transform .1s;
 }

@@ -35,6 +35,7 @@
         } 
 
         if(empty($_POST['old_password'])) {
+            $user->hashed_password = $user->password;
             $user->update_user_profile();
             $message = "แก้ไขโปรไฟล์เรียบร้อย";
         }

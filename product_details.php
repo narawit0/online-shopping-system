@@ -16,12 +16,13 @@
                 <img src="<?php echo "." . DS . "images" . DS . $row['image']; ?>" alt="">
             </figure>
             <div class="product-popup--text">
-                <span class="product-popup--title"><?php echo $row['name']; ?></span>
+                <span class="product-popup--title">ชื่อสินค้า: <?php echo $row['name']; ?></span>
                 <div class="product-popup--description">
+                คำอธิบายสินค้า: 
                 <?php echo $row['description']; ?>
                 </div>
                 <span class="product-popup--price">
-                <?php echo $row['price']; ?>
+                ราคา: <?php echo $row['price']; ?> บาท
                 </span>
             </div>
         </div>

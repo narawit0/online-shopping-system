@@ -79,16 +79,6 @@
         background-color: var(--color-secondary-dark);
     }
 
-    #product-popup {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform:translate(-50%, -50%);
-        z-index: 1;
-        width: 30rem;
-        height: 10rem;
-        background-color: pink;
-    }
 
     #product-popup {
             position: absolute;
@@ -96,20 +86,9 @@
             left: 50%;
             transform:translate(-50%, -50%);
             z-index: 1;
-            width: 30rem;
+            width: 50rem;
             background-color: pink;
-            animation: show_popup;
         }
-
-    @keyframes show_popup {
-        0% {
-            transform: scale(0);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-    }
 
         .product-popup--header {
             display: flex;
@@ -128,7 +107,6 @@
             margin: 0;
             padding: 0;
             flex-basis: 48%;
-            background-color: black;
         }
 
         .product-popup--image > img {
@@ -150,10 +128,12 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
+            font-size: 1.2rem;
+            color: var(--color-secondary-dark);
         }
 
         .product-popup--title {
-            font-weight: bold;
+            margin-bottom: .5rem;
         }
 
         .product-popup--footer {
@@ -209,7 +189,7 @@
                         <span class="product--price">ราคา: <?php echo $row['price'];?> บาท</span>
                         <span class="product--name">ชื่อสินค้า: <?php echo $row['name']; ?></span>
                         <div class="button-group">
-                            <a href="javascript:void(0);" class="product--button product--button-detail" onclick="show_product_details($row['id'])">รายละเอียด</a>
+                            <a href="javascript:void(0);" class="product--button product--button-detail" onclick="show_product_details(<?php echo $row['id']; ?>)">รายละเอียด</a>
                             <a href="" class="product--button product--button-buy">ซื้อเลย</a>
                         </div>
                     </div>

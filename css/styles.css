@@ -143,6 +143,7 @@ li {
 .cart {
     position: relative;
     margin-right: 10rem;
+    cursor: pointer;
 }
 
 .cart--count {

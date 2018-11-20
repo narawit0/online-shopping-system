@@ -32,7 +32,7 @@
                         <use xlink:href="img/sprite.svg#icon-cart">
                     </svg>
                     <div class="cart--count">
-                        <span>10</span>
+                        <span id="cart--count--display"></span>
                     </div>
                 </div>
                 <div class="user">

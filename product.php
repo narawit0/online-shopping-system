@@ -78,6 +78,14 @@
 
             return $database->query($sql);
         }
+
+        public function check_products_quanity($id) {
+            global $database;
+
+            $sql = "SELECT quanity FROM products WHERE id = $id";
+
+            return $database->query($sql);
+        }
     }
 
 ?>

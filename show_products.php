@@ -37,7 +37,7 @@
                         <span class="product--name">ชื่อสินค้า: <?php echo $row['name']; ?></span>
                         <div class="button-group">
                             <a href="javascript:void(0);" class="product--button product--button-detail" onclick="show_product_details(<?php echo $row['id']; ?>)">รายละเอียด</a>
-                            <a href="javascript:void(0);" class="product--button product--button-buy" onclick="add_products_to_cart(<?php echo $row['id']; ?>)">ซื้อเลย</a>
+                            <a href="javascript:void(0);" class="product--button product--button-buy" onclick="add_product_to_cart(<?php echo $row['id']; ?>)">ซื้อเลย</a>
                         </div>
                     </div>
                 <?php

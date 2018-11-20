@@ -1,11 +1,37 @@
 <?php include("init.php"); ?>
-    <!-- <?php 
+    <?php 
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $product = Product::select_product_by_id($id);
             $row = mysqli_fetch_assoc($product);
         }
-    ?> -->
+
+        // if(isset($_POST['buy'])) {
+        //     // $quanity = $_POST['quanity'];
+        //     // $result = Product::check_products_quanity($id);
+        //     // echo var_dump($quanity);
+        //     // $row = mysqli_fetch_assoc($result);
+
+        //     // $product_quanities = $row['quanity'];
+
+        //     // if ($quanity <= $product_quanities) {
+        //     //     echo "<script type='text/javascript'> ";
+        //     //     echo "add_product_to_cart($id, $quanity); ";
+        //     //     echo "</script>";
+        //     // } else {
+        //     //     echo '<script type="text/javascript">',
+        //     //         'alert("Helloworld");',
+        //     //         '</script>'
+        //     //     ;
+        //     // }
+
+        //     echo '<script type="text/javascript">',
+        //             'alert("Helloworld");',
+        //             '</script>'
+        //         ;
+
+        // }
+    ?>
     <div id="product-popup">
         <div class="product-popup--header">
             <h4 class="product-popup--heading">รายละเอียดสินค้า</h4>
@@ -27,9 +53,10 @@
             </div>
         </div>
         <div class="product-popup--footer">
-            <form action="">
-                <input type="number"  value="<?php echo $row['quanity']; ?>">
-                <button type="submit">ซื้อเลย</button>
+            <form action="add_cart.php" method="POST">
+                <input type="number" name="quanity">
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <button type="submit" name="buy">ซื้อเลย</button>
             </form>
         </div>
     </div>

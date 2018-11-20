@@ -6,8 +6,19 @@
         $cart->quanity = $_POST['quanity'];
         $cart->user_id = $_SESSION['id'];
 
-        if($cart->add_cart()) {
-            echo "DONE";
+        $quanity_result = Product::check_products_quanity($cart->pro_id);
+
+        $row = mysqli_fetch_assoc($quanity_result);
+
+        $product_quanities = $row['quanity'];
+
+        if ($cart->quanity <= $product_quanities) {
+            if($cart->add_cart()) {
+                header("Location: index.php");
+            }
+        } else {
+            die("FAILED");
         }
+
     }
 ?>

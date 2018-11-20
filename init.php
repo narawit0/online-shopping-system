@@ -9,4 +9,5 @@
     require_once("user.php");
     require_once("seller.php");
     require_once("product.php");
+    require_once("cart.php");
 ?>

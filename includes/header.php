@@ -28,12 +28,14 @@
                     </form>
                 </div>
                 <div class="cart">
-                    <svg class="icon icon-cart">
-                        <use xlink:href="img/sprite.svg#icon-cart">
-                    </svg>
-                    <div class="cart--count">
-                        <span id="cart--count--display"></span>
-                    </div>
+                    <a href="show_cart.php">
+                        <svg class="icon icon-cart">
+                            <use xlink:href="img/sprite.svg#icon-cart">
+                        </svg>
+                        <div class="cart--count">
+                            <span id="cart--count--display"></span>
+                        </div>
+                    </a>
                 </div>
                 <div class="user">
                     <?php if(isset($_SESSION['first_name'])) {

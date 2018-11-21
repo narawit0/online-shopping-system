@@ -22,6 +22,7 @@ document.getElementById('popup').addEventListener('click', function(e){
     }
 });
 
+// หยิบสินค้าใส่ตะกร้า
 function add_product_to_cart(pro_id, quanity=1) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "add_cart.php", true);
@@ -38,6 +39,7 @@ function add_product_to_cart(pro_id, quanity=1) {
     xmlhttp.send("id=" + pro_id + "&quanity=" + quanity);
 }
 
+//นับจำนวนสินค้าในตะกร้า
 function get_cart_count() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "cart_count.php", true);

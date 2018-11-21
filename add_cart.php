@@ -1,6 +1,6 @@
 <?php include("init.php"); ?>
 <?php 
-    if(isset($_POST['id']) && isset($_POST['quanity'])) {
+    if(isset($_POST['id']) && isset($_POST['quanity']) && isset($_SESSION['id'])) {
         $cart = new Cart();
         $cart->pro_id = $_POST['id'];
         $cart->quanity = $_POST['quanity'];
@@ -13,12 +13,12 @@
         $product_quanities = $row['quanity'];
 
         if ($cart->quanity <= $product_quanities) {
-            if($cart->add_cart()) {
-                header("Location: index.php");
-            }
+            $cart->add_cart();
         } else {
-            die("FAILED");
+            echo "จำนวนสินค้ามีไม่เพียงพอ";
         }
 
+    } else {
+        echo "กรุณาเข้าสู่ระบบก่อนทำรายการสั่งซื้อ";
     }
 ?>

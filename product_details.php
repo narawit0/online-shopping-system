@@ -5,32 +5,6 @@
             $product = Product::select_product_by_id($id);
             $row = mysqli_fetch_assoc($product);
         }
-
-        // if(isset($_POST['buy'])) {
-        //     // $quanity = $_POST['quanity'];
-        //     // $result = Product::check_products_quanity($id);
-        //     // echo var_dump($quanity);
-        //     // $row = mysqli_fetch_assoc($result);
-
-        //     // $product_quanities = $row['quanity'];
-
-        //     // if ($quanity <= $product_quanities) {
-        //     //     echo "<script type='text/javascript'> ";
-        //     //     echo "add_product_to_cart($id, $quanity); ";
-        //     //     echo "</script>";
-        //     // } else {
-        //     //     echo '<script type="text/javascript">',
-        //     //         'alert("Helloworld");',
-        //     //         '</script>'
-        //     //     ;
-        //     // }
-
-        //     echo '<script type="text/javascript">',
-        //             'alert("Helloworld");',
-        //             '</script>'
-        //         ;
-
-        // }
     ?>
     <div id="product-popup">
         <div class="product-popup--header">
@@ -53,10 +27,10 @@
             </div>
         </div>
         <div class="product-popup--footer">
-            <form action="add_cart.php" method="POST">
-                <input type="number" name="quanity">
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <button type="submit" name="buy">ซื้อเลย</button>
+            <form id="add_cart" method="POST">
+                <input type="number"  id="quanity" value="1">
+                <input type="hidden"  id="id" value="<?php echo $id; ?>">
+                <button type="submit" id="buy">ซื้อเลย</button>
             </form>
         </div>
     </div>

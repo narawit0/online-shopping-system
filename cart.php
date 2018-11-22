@@ -30,6 +30,31 @@
 
             return $database->query($sql);
         }
+
+        public function check_duplicate_product() {
+            global $database;
+
+            $sql = "SELECT * FROM cart WHERE pro_id = {$this->pro_id}";
+
+            return mysqli_num_rows($database->query($sql));
+        }
+
+        public function update_cart() {
+            global $database;
+
+            $sql = "UPDATE cart SET quanity = quanity + {$this->quanity} WHERE pro_id = {$this->pro_id}";
+
+            $database->query($sql);
+            return mysqli_affected_rows($database->connection);
+        }
+
+        public function check_cart_products_quanity() {
+            global $database;
+
+            $sql = "SELECT quanity FROM cart WHERE pro_id = {$this->pro_id}";
+
+            return $database->query($sql);
+        }
     }
 
 ?>

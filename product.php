@@ -58,7 +58,7 @@
         public static function select_all_products() {
             global $database;
 
-            $sql = "SELECT products.id, products.name, products.price, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id";
+            $sql = "SELECT products.id, products.name, products.price, products.quanity, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id";
 
             return $database->query($sql);
         }

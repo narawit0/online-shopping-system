@@ -7,15 +7,29 @@
         $cart->user_id = $_SESSION['id'];
 
         $quanity_result = Product::check_products_quanity($cart->pro_id);
-
         $row = mysqli_fetch_assoc($quanity_result);
-
         $product_quanities = $row['quanity'];
 
-        if ($cart->quanity <= $product_quanities) {
-            $cart->add_cart();
-        } else {
-            echo "จำนวนสินค้ามีไม่เพียงพอ";
+        if(!$cart->check_duplicate_product()) {
+            if ($cart->quanity <= $product_quanities) {
+                    $cart->add_cart();
+            } else {
+                echo "จำนวนสินค้ามีไม่เพียงพอ สินค้าคงเหลือจำนวน " . $product_quanities  . "ชิ้น เท่านั้น";
+            }
+        } elseif ($cart->check_duplicate_product() > 0) {
+            $cart_quanity_result = $cart->check_cart_products_quanity();
+            $row = mysqli_fetch_assoc($cart_quanity_result);
+            $cart_quanities = $row['quanity'];
+            $left_in_stock = $product_quanities - $cart_quanities;
+            if ($cart->quanity + $cart_quanities <= $product_quanities) {
+                $cart->update_cart();
+            } else {
+                if($left_in_stock !== 0) {
+                    echo "จำนวนสินค้ามีไม่เพียงพอ สินค้าคงเหลือจำนวน " . $left_in_stock  . "ชิ้น เท่านั้น";
+                } else {
+                    echo "ขอโทษด้วยค่ะ่สินค้าหมดแล้ว";
+                }
+            }
         }
 
     } else {

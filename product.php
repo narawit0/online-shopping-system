@@ -66,7 +66,7 @@
         public static function select_products_by_cat_id($id) {
             global $database;
 
-            $sql = "SELECT products.id, products.name, products.price, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id WHERE products.cat_id = {$id}";
+            $sql = "SELECT products.id, products.name, products.quanity, products.price, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id WHERE products.cat_id = {$id}";
 
             return $database->query($sql);
         }

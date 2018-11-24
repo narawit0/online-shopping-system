@@ -1,4 +1,4 @@
 <?php include("includes/header.php"); ?>
-<?php include("show_products.php");?>
+<?php include("main.php");?>
 <?php include("includes/footer.php"); ?>
     

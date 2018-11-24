@@ -10,7 +10,9 @@
         $row = mysqli_fetch_assoc($quanity_result);
         $product_quanities = $row['quanity'];
 
+        //ถ้าไม่มีสินค้านี้อยู่ในตะกร้าสินค้า
         if(!$cart->check_duplicate_product()) {
+            //ถ้าจำนวนสินค้าที่สั่งซื้อ มีน้อยกว่าหรือเท่ากับในสต๊อค ให้เพิ่มสินค้าลงตะกร้า
             if ($cart->quanity <= $product_quanities) {
                     $cart->add_cart();
             } else {

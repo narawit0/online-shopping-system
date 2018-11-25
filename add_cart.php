@@ -11,14 +11,14 @@
         $product_quanities = $row['quanity'];
 
         //ถ้าไม่มีสินค้านี้อยู่ในตะกร้าสินค้า
-        if(!$cart->check_duplicate_product()) {
+        if(!$cart->check_duplicate_product($cart->user_id)) {
             //ถ้าจำนวนสินค้าที่สั่งซื้อ มีน้อยกว่าหรือเท่ากับในสต๊อค ให้เพิ่มสินค้าลงตะกร้า
             if ($cart->quanity <= $product_quanities) {
                     $cart->add_cart();
             } else {
                 echo "จำนวนสินค้ามีไม่เพียงพอ สินค้าคงเหลือจำนวน " . $product_quanities  . "ชิ้น เท่านั้น";
             }
-        } elseif ($cart->check_duplicate_product() > 0) {
+        } elseif ($cart->check_duplicate_product($cart->user_id) > 0) {
             $cart_quanity_result = $cart->check_cart_products_quanity();
             $row = mysqli_fetch_assoc($cart_quanity_result);
             $cart_quanities = $row['quanity'];

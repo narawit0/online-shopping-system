@@ -31,10 +31,10 @@
             return $database->query($sql);
         }
 
-        public function check_duplicate_product() {
+        public function check_duplicate_product($user_id) {
             global $database;
 
-            $sql = "SELECT * FROM cart WHERE pro_id = {$this->pro_id}";
+            $sql = "SELECT * FROM cart WHERE pro_id = {$this->pro_id} AND user_id = {$user_id}";
 
             return mysqli_num_rows($database->query($sql));
         }
@@ -51,7 +51,7 @@
         public function check_cart_products_quanity() {
             global $database;
 
-            $sql = "SELECT quanity FROM cart WHERE pro_id = {$this->pro_id}";
+            $sql = "SELECT SUM(quanity) AS quanity FROM cart WHERE pro_id = {$this->pro_id}";
 
             return $database->query($sql);
         }

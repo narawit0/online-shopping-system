@@ -28,7 +28,11 @@
     </figure>
     <span class="product--name">ชื่อสินค้า: <?php echo $row['name']; ?></span>
     <span class="product--price">ราคา: <?php echo $row['price'];?> บาท</span>
-    <span class="product--quanity">จำนวนสินค้า: <?php echo $left_in_stock; ?> ชิ้น</span>
+    <?php if($left_in_stock > 0) { ?>
+    <span class="product--quanity product--quanity--exist">จำนวนสินค้า: <?php echo $left_in_stock; ?> ชิ้น</span>
+    <?php } else { ?>
+        <span class="product--quanity product--quanity--not-exist">จำนวนสินค้า: <?php echo $left_in_stock; ?> ชิ้น</span>
+    <?php } ?>
     <div class="button-group">
         <a href="javascript:void(0);" class="product--button product--button-detail" onclick="show_product_details(<?php echo $row['id']; ?>)">รายละเอียด</a>
         <a href="javascript:void(0);" class="product--button product--button-buy" onclick="add_product_to_cart(<?php echo $row['id']; ?>, <?php echo $cat_id; ?>)">ซื้อเลย</a>

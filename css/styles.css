@@ -422,6 +422,7 @@ li {
     transform: translateY(-1rem) translateX(-1rem);
     background-image: linear-gradient(to right, var(--color-primary-dark), var(--color-secondary-dark));
     color: var(--color-white);
+    box-shadow: .5rem 1rem 1rem rgba(0,0,0, 0.2);
 }
 
 .product:hover .product--button-buy {
@@ -532,4 +533,14 @@ li {
     .product-popup--footer > form > input {
         width: 3rem;
         padding: .2rem;
+    }
+
+    /* PRODUCTS STATUS*/
+
+    .product--quanity.product--quanity--exist {
+        color: green;
+    }
+
+    .product--quanity.product--quanity--not-exist {
+        color: red;
     }

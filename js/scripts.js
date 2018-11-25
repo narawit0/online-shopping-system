@@ -24,7 +24,6 @@ document.getElementById('popup').addEventListener('click', function(e){
 
 // หยิบสินค้าใส่ตะกร้า
 function add_product_to_cart(pro_id, cat_id, quanity=1) {
-    console.log(cat_id);
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "add_cart.php", true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

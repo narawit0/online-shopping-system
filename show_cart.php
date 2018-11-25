@@ -1,60 +1,57 @@
 <?php include("includes/header.php"); ?>
-<style type="text/css">
-    .show-cart {
-        margin-top: 2rem;
-    }
-    .show-cart--table {
-        margin: 0 auto;
-        width: 70rem;
-        border-collapse: collapse;
-        font-weight: 300;
-    }
+<?php 
+    if(isset($_POST['action'])) {
+        if($_POST['action'] == "save-change") {
+            $pro_id = $_POST['item_id'];
+            $quanity = $_POST['quanity'];
+    
+            $product_result = Product::check_products_quanity($pro_id);
+    
+            $row = mysqli_fetch_assoc($product_result);
+            $product_quanities = $row['quanity'];
+    
+            $cart = new Cart();
+            $cart->pro_id = $pro_id;
+            $cart->quanity = $quanity;
+            $cart->user_id = $_SESSION['id'];
+            $cart_old_result = $cart->check_cart_quanities_before_update();
+            $row = mysqli_fetch_assoc($cart_old_result);
+            $old_cart_quanities = $row['quanity'];
+    
+            $cart_result = $cart->check_cart_products_quanity();
+            $row = mysqli_fetch_assoc($cart_result);
+            $cart_quanities = $row['quanity'];
+            
+            if(($quanity - $old_cart_quanities) + $cart_quanities <= $product_quanities) {
+                if($cart->update_quanities_cart_by_id()) {
+                    header("Location: show_cart.php");
+                } else {
+                    $message = "มีบางอย่างผิดพลาดกรุณาตรวจสอบอีกครั้ง";
+                }
+            } else {
+                $message = "ไม่สามารถเพิ่มจำนวนสินค้ามากกว่านี้";
+            }
+        } elseif ($_POST['action']  == "delete") {
+            $cart = new Cart();
+            $cart->pro_id = $_POST['item_id'];
+            $cart->user_id = $_SESSION['id'];
 
-    .show-cart--table > thead {
-        background-color: var(--color-grey-dark-1);
-        color: var(--color-white);
-    }
+            if($cart->delete_product_in_cart()) {
+                header("Location: show_cart.php");
+            }
 
-    .show-cart--table  * {
-        padding: 1rem;
-        text-align: center;
-    }
-
-    .show-cart--table > thead > tr > th:nth-child(1), th:nth-child(3)  {
-        width: 5rem;
-    }
-
-    .show-cart--table > thead > tr > th:last-child {
-        width: 10rem;
-    }
-
-    .show-cart--table  > tbody tr:nth-child(odd) {
-        background-color: var(--color-secondary-dark);
-    }
-
-    .show-cart--table  > tbody tr:nth-child(even) {
-        background-color: var(--color-grey-dark-2);
-    }
-
-    .show-cart--table  > tbody tr {
-        color: var(--color-white);
-        transition: all .3s;
-    }
-
-    .show-cart--table  > tbody tr:hover {
-        background-color: var(--color-white);
-        color: var(--color-primary-dark);
+        }
     }
 
-    .show-cart--table > tfoot {
-        background-color: var(--color-grey-dark-1);
-        color: var(--color-white);
-    }
-
-
-</style>
+?>
 <main class="show-cart">
     <div class="container">
+            <?php if(isset($message)) {
+                echo "<div class='warning-message'>";
+                echo $message;
+                echo "</div>";
+            }
+            ?>
         <table class="show-cart--table">
         <thead>
         <tr>
@@ -62,6 +59,7 @@
             <th>ชื่อสินค้า</th>
             <th>จำนวน</th>
             <th>ราคาสินค้า</th>
+            <th>แก้ไข</th>
         </tr>
         </thead>
         <tbody>
@@ -78,8 +76,12 @@
         echo "<tr>";
         echo "<td>{$i}</td>";
         echo "<td>{$row['product_name']}</td>";
-        echo "<td>{$row['quanity']}</td>";
+        echo "<td><input type='number' min='1' value='{$row['quanity']}'></td>";
         echo "<td>" . number_format($price) . "</td>";
+        echo "<td>
+             <button class='save-change' data-id='{$row['id']}'>บันทึก</button>
+             <button class='delete' data-id='{$row['id']}'>ลบ</button>
+             </td>";
         echo "</tr>";
         $i++;
     }  
@@ -91,12 +93,43 @@
                 <td>รวมทั้งหมด</td>
                 <td></td>
                 <td><?php echo number_format($total_price); ?></td>
+                <td></td>
             </tr>
         </tfoot>
         </table>
+        <form id="update-cart" method="POST">
+            <input type="hidden" name="action">
+            <input type="hidden" name="item_id">
+            <input type="hidden" name="quanity">
+        </form>
     </div>
 </main>
 <?php include("includes/footer.php"); ?>
 <script type="text/javascript">
     get_cart_count();
+
+    var save_change_button = document.querySelectorAll('.save-change');
+    for(var i = 0; i < save_change_button.length; i++) {
+        save_change_button[i].addEventListener('click', function() {
+            var item_id = this.getAttribute('data-id');
+            var quanity = this.parentNode.parentNode.childNodes[2].childNodes[0].value;
+            var form = document.querySelector("form#update-cart");
+            form.querySelector("input[name='action']").value = "save-change";
+            form.querySelector("input[name='item_id']").value = item_id;
+            form.querySelector("input[name='quanity']").value = quanity;
+            form.submit();
+        })
+    }
+
+    var delete_button = document.querySelectorAll('.delete');
+    for(var i = 0; i < delete_button.length; i++) {
+        delete_button[i].addEventListener('click', function() {
+            var item_id = this.getAttribute('data-id');
+            var form = document.querySelector("form#update-cart");
+            form.querySelector("input[name='action']").value = "delete";
+            form.querySelector("input[name='item_id']").value = item_id;
+            form.submit();
+        })
+    }
+
 </script>

@@ -544,3 +544,61 @@ li {
     .product--quanity.product--quanity--not-exist {
         color: red;
     }
+
+    /* CART TABLE */
+    .show-cart {
+        margin-top: 2rem;
+    }
+    .show-cart--table {
+        margin: 0 auto;
+        width: 75rem;
+        border-collapse: collapse;
+        font-weight: 300;
+    }
+
+    .show-cart--table > thead {
+        background-color: var(--color-grey-dark-1);
+        color: var(--color-white);
+    }
+
+    .show-cart--table  * {
+        padding: 1rem;
+        text-align: center;
+    }
+
+
+    .show-cart--table > tbody > tr > td > input {
+        text-align: left;
+        width: 6rem;
+    }
+
+    .show-cart--table > thead > tr > th:nth-child(1), th:nth-child(3)  {
+        width: 5rem;
+    }
+
+    .show-cart--table > thead > tr > th:last-child {
+        width: 13rem;
+    }
+
+    .show-cart--table  > tbody tr:nth-child(odd) {
+        background-color: var(--color-secondary-dark);
+    }
+
+    .show-cart--table  > tbody tr:nth-child(even) {
+        background-color: var(--color-grey-dark-2);
+    }
+
+    .show-cart--table  > tbody tr {
+        color: var(--color-white);
+        transition: all .3s;
+    }
+
+    .show-cart--table  > tbody tr:hover {
+        background-color: var(--color-white);
+        color: var(--color-primary-dark);
+    }
+
+    .show-cart--table > tfoot {
+        background-color: var(--color-grey-dark-1);
+        color: var(--color-white);
+    }

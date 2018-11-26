@@ -102,6 +102,12 @@
             <input type="hidden" name="item_id">
             <input type="hidden" name="quanity">
         </form>
+        <?php if(mysqli_num_rows($result) > 0) { ?>
+        <div class="button-group">
+            <button class="clear-button">ลบสินค้าทั้งหมด</button>
+            <button class="order-button">ทำรายการสั่งซื้อ</button>
+        </div>
+        <?php } ?>
     </div>
 </main>
 <?php include("includes/footer.php"); ?>
@@ -131,5 +137,14 @@
             form.submit();
         })
     }
+
+    var order_button = document.querySelector('.order-button');
+    order_button.addEventListener('click', function() {
+        var form = document.querySelector("form#update-cart");
+        form.action = "order_cust.php";
+        form.method = "POST";
+        form.submit();
+
+    })
 
 </script>

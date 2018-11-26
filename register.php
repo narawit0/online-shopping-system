@@ -66,7 +66,7 @@
             </div>
 
             <div class="form-group">
-                <label for="address">ที่อยู่</label>
+                <label for="address">ที่อยู่สำหรับการจัดส่งสินค้า</label>
                 <textarea name="address" id="" cols="30" rows="10" class="form-control" required></textarea>
             </div>
 

@@ -27,7 +27,7 @@ if(empty($_GET['cat_id']) || !isset($_GET['cat_id'])) {
             <img src="<?php echo "." . DS . "images" . DS . $row['image']?>" alt="">
         </figure>
         <span class="product--name">ชื่อสินค้า: <?php echo $row['name']?></span>
-        <span class="product--price">ราคา: <?php echo $row['price']; ?> บาท</span>
+        <span class="product--price">ราคา: <?php echo number_format($row['price']); ?> บาท</span>
         <?php if($left_in_stock > 0) { ?>
         <span class="product--quanity product--quanity--exist">จำนวนสินค้า: <?php echo $left_in_stock; ?> ชิ้น</span>
         <?php } else { ?>

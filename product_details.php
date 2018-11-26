@@ -22,7 +22,7 @@
                 <?php echo $row['description']; ?>
                 </div>
                 <span class="product-popup--price">
-                ราคา: <?php echo $row['price']; ?> บาท
+                ราคา: <?php echo number_format($row['price']); ?> บาท
                 </span>
             </div>
         </div>

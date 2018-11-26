@@ -13,11 +13,13 @@
         $user->hashed_password = $user->password;
 
         $user->update_user_profile();
+
+        header("Location: order_confirm.php");
     }
 ?>
 <div class="container">
     <section class="order-customer">
-    <div class="order-title">
+    <div class="order-customer--title">
             <h4>ยืนยันข้อมูลในการจัดส่ง</h4>
     </div>
     <form action="" method="POST">

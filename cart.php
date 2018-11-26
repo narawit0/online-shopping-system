@@ -80,6 +80,14 @@
 
             return $database->query($sql);
         }
+
+        public function clear_cart() {
+            global $database;
+
+            $sql = "DELETE FROM cart WHERE user_id = {$this->user_id}";
+
+            return $database->query($sql);
+        }
     }
 
 ?>

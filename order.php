@@ -26,10 +26,18 @@
             return $database->query($sql);
         }
 
-        public function get_order_by_user_id() {
+        public function get_last_order_by_user_id() {
             global $database;
 
-            $sql  = "SELECT id FROM orders WHERE user_id = {$this->user_id}";
+            $sql  = "SELECT id FROM orders WHERE user_id = {$this->user_id} ORDER BY id DESC LIMIT 1";
+
+            return $database->query($sql);
+        }
+
+        public function get_all_order_by_user_id() {
+            global $database;
+
+            $sql = "SELECT * FROM orders WHERE user_id = {$this->user_id}";
 
             return $database->query($sql);
         }
@@ -37,10 +45,12 @@
         public function get_order_details_by_order_id() {
             global $database;
 
-            $sql  = "SELECT t1.id, SUM(t2.price * t1.quanity) AS total_price FROM order_details AS t1 INNER JOIN products AS t2 ON t1.pro_id = t2.id ";
+            $sql  = "SELECT t1.* , t2.price, t2.name  FROM order_details AS t1 INNER JOIN products AS t2 ON t1.pro_id = t2.id ";
             $sql .= "WHERE t1.order_id = {$this->order_id}";
 
             return $database->query($sql);
         }
+
+
     }
 ?>

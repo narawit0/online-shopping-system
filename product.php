@@ -86,6 +86,16 @@
 
             return $database->query($sql);
         }
+
+        public function decrease_product_quanity_in_stock() {
+            global $database;
+
+            $sql = "UPDATE products SET quanity = quanity - {$this->product_quanity} WHERE id = {$this->id}";
+
+            $database->query($sql);
+
+            return mysqli_affected_rows($database->connection);
+        }
     }
 
 ?>

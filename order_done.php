@@ -16,6 +16,10 @@
                 $order->pro_id = $row['id'];
                 $order->quanity = $row['quanity'];
                 $order->create_order_detail();
+                $product = new Product();
+                $product->id = $row['id'];
+                $product->product_quanity = $row['quanity'];
+                $product->decrease_product_quanity_in_stock();
             }
 
             $cart->clear_cart();

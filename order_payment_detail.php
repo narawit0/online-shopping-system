@@ -8,8 +8,12 @@
         $order->order_id = $row['id'];
         $order_result = $order->get_order_details_by_order_id();
 
-        $row = mysqli_fetch_assoc($order_result);
-        $total_price = $row['total_price'];
+        $total_price = 0;
+
+        while($row = mysqli_fetch_assoc($order_result)) {
+            $total_price += ($row['price'] * $row['quanity']);
+        }
+        
 ?>
 <div class="container">
     <div class="order-done">

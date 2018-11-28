@@ -20,7 +20,7 @@
 
             $cart->clear_cart();
 
-            header("Location: order_payment.php");
+            header("Location: order_payment_detail.php");
 
         }
     }

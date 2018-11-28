@@ -11,4 +11,5 @@
     require_once("product.php");
     require_once("cart.php");
     require_once("order.php");
+    require_once("payment.php")
 ?>

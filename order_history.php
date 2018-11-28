@@ -37,9 +37,11 @@
                     </thead>
                     <tbody>
             <?php 
+                $total_price = 0;
+                $i = 1;
                 $query_order_details_result = $order->get_order_details_by_order_id();
                 while($row = mysqli_fetch_assoc($query_order_details_result)) {
-                    $i = 1;
+                    $total_price +=  ($row['quanity'] * $row['price']);
             ?>
                     <tr>
                         <td><?php echo $i; ?></td>
@@ -52,6 +54,14 @@
                 }
             ?>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td>รวมทั้งหมด</td>
+                        <td></td>
+                        <td><?php echo number_format($total_price); ?></td>
+                    </tr>
+                </tfoot>
             </table>
             </div> <!-- order-history--cart -->
         </div> <!-- end order-history--block -->

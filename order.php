@@ -51,6 +51,14 @@
             return $database->query($sql);
         }
 
+        public function update_payment_status() {
+            global $database;
+
+            $sql = "UPDATE orders SET paid = 'yes' WHERE id = {$this->order_id} AND user_id = {$this->user_id}";
+
+            return $database->query($sql);
+        }
+
 
     }
 ?>

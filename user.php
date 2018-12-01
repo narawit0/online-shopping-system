@@ -105,5 +105,13 @@
 
             return $database->query($sql);
         }
+
+        public static function is_admin_approved($username) {
+            global $database;
+
+            $sql = "SELECT * FROM users WHERE username = '{$username}' AND status = 'pending'";
+
+            return mysqli_num_rows($database->query($sql));
+        }
     }
 ?>

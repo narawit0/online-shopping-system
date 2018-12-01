@@ -12,7 +12,7 @@
         }
     }
 ?>
-<table class="user-admin--table">
+<table class="admin--table">
     <thead>
         <tr>
             <td>Id</td>
@@ -42,35 +42,35 @@
             <td><?php echo $value->phone; ?></td>
             <td><?php echo $value->role; ?></td>
             <td><?php echo $value->status; ?></td>
-            <td><button class="approve--button" data-id=<?php echo $value->id; ?>>อนุมัติ</button><button class="unapprove--button" data-id=<?php echo $value->id; ?>>ไม่อนุมัติ</button></td>
+            <td><button class="user-approve--button" data-id=<?php echo $value->id; ?>>อนุมัติ</button><button class="user-unapprove--button" data-id=<?php echo $value->id; ?>>ไม่อนุมัติ</button></td>
         </tr>
 <?php
     }
 ?>
     </tbody>
 </table>
-<form id="approve-form" method="POST">
+<form id="user-approve-form" method="POST">
     <input type="hidden" name="id">
     <input type="hidden" name="action">
 </form>
 <?php include("includes/footer.php"); ?>
 <script type="text/javascript">
-    var approve = document.querySelectorAll('.approve--button');
-    for(var i = 0; i < approve.length; i++) {
-        approve[i].addEventListener('click', function() {
+    var user_approve = document.querySelectorAll('.user-approve--button');
+    for(var i = 0; i < user_approve.length; i++) {
+        user_approve[i].addEventListener('click', function() {
             var user_id = this.getAttribute('data-id');
-            var form = document.getElementById('approve-form');
+            var form = document.getElementById('user-approve-form');
             form.querySelector("input[name='id']").value = user_id;
             form.querySelector("input[name='action']").value = "approve";
             form.submit();
         })
     }
 
-    var unapprove = document.querySelectorAll('.unapprove--button');
-    for(var i = 0; i < approve.length; i++) {
-        unapprove[i].addEventListener('click', function() {
+    var user_approveunapprove = document.querySelectorAll('.user-unapprove--button');
+    for(var i = 0; i < user_approveunapprove.length; i++) {
+        user_approveunapprove[i].addEventListener('click', function() {
             var user_id = this.getAttribute('data-id');
-            var form = document.getElementById('approve-form');
+            var form = document.getElementById('user-approve-form');
             form.querySelector("input[name='id']").value = user_id;
             form.querySelector("input[name='action']").value = "unapprove";
             form.submit();

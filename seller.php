@@ -1,5 +1,6 @@
 <?php 
     class Seller {
+        public $id;
         public $username;
         public $bank_number;
         public $bank_account;
@@ -10,6 +11,16 @@
             global $database;
 
             $sql = "SELECT * FROM sellers WHERE username = '{$username}' AND status = 'approved'";
+            $result = $database->query($sql);
+
+            return mysqli_num_rows($result);
+        }
+
+        public static function check_duplicate_seller($username) {
+            global $database;
+
+            $sql = "SELECT * FROM sellers WHERE username = '{$username}'";
+            
             $result = $database->query($sql);
 
             return mysqli_num_rows($result);

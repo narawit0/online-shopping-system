@@ -5,16 +5,20 @@
         } 
 ?>
 <?php 
-    if(isset($_POST['register_seller'])) {
-        $seller = new Seller();
-        $seller->username = $_SESSION['username'];
-        $seller->bank_number = $_POST['bank_number'];
-        $seller->bank_account = $_POST['bank_account'];
-        $seller->bank_name = $_POST['bank_name'];
-
-        if($seller->create_seller()) {
-            header("Location: posting.php");
+    if(!Seller::check_duplicate_seller($_SESSION['username'])) {
+        if(isset($_POST['register_seller'])) {
+            $seller = new Seller();
+            $seller->username = $_SESSION['username'];
+            $seller->bank_number = $_POST['bank_number'];
+            $seller->bank_account = $_POST['bank_account'];
+            $seller->bank_name = $_POST['bank_name'];
+    
+            if($seller->create_seller()) {
+                $message = "กรุณารอการอนุมัติจากแอดมินเว็บไซต์";
+            }
         }
+    } else {
+        $message = "ท่านได้ทำการสมัครเป็นผู้ขายแล้ว กรุณารอการอนุมัติจากแอดมินค่ะ";
     }
 ?>
 <div class="container">

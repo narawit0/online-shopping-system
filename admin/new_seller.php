@@ -1,18 +1,18 @@
 <?php include("includes/header.php"); ?>
 <?php 
-    // if(isset($_POST['action'])) {
-    //     if($_POST['action'] == "approve") {
-    //         $user_admin = new UserAdmin();
-    //         $user_admin->id = $_POST['id'];
-    //         $user_admin->update_status_new_user();
-    //     } elseif($_POST['action'] == "unapprove") {
-    //         $user_admin = new UserAdmin();
-    //         $user_admin->id = $_POST['id'];
-    //         $user_admin->delete_user_by_id();
-    //     }
-    // }
+    if(isset($_POST['action'])) {
+        if($_POST['action'] == "approve") {
+            $seller_admin = new SellerAdmin();
+            $seller_admin->id = $_POST['id'];
+            $seller_admin->update_seller_status();
+        } elseif($_POST['action'] == "unapprove") {
+            $seller_admin = new SellerAdmin();
+            $seller_admin->id = $_POST['id'];
+            $seller_admin->delete_user_by_id();
+        }
+    }
 ?>
-<table class="seller-admin--table">
+<table class="admin--table">
     <thead>
         <tr>
             <td>Id</td>
@@ -44,35 +44,35 @@
             <td><?php echo $row['bank_account']; ?></td>
             <td><?php echo $row['bank_name']; ?></td>
             <td><?php echo $row['bank_number']; ?></td>
-            <td><button class="approve--button" data-id=<?php echo $row['id']; ?>>อนุมัติ</button><button class="unapprove--button" data-id=<?php echo $row['id']; ?>>ไม่อนุมัติ</button></td>
+            <td><button class="seller-approve--button" data-id=<?php echo $row['id']; ?>>อนุมัติ</button><button class="seller-unapprove--button" data-id=<?php echo $row['id']; ?>>ไม่อนุมัติ</button></td>
         </tr>
 <?php
     }
 ?>
     </tbody>
 </table>
-<form id="approve-form" method="POST">
+<form id="seller-approve-form" method="POST">
     <input type="hidden" name="id">
     <input type="hidden" name="action">
 </form>
 <?php include("includes/footer.php"); ?>
 <script type="text/javascript">
-    var approve = document.querySelectorAll('.approve--button');
-    for(var i = 0; i < approve.length; i++) {
-        approve[i].addEventListener('click', function() {
+    var seller_approve = document.querySelectorAll('.seller-approve--button');
+    for(var i = 0; i < seller_approve.length; i++) {
+        seller_approve[i].addEventListener('click', function() {
             var user_id = this.getAttribute('data-id');
-            var form = document.getElementById('approve-form');
+            var form = document.getElementById('seller-approve-form');
             form.querySelector("input[name='id']").value = user_id;
             form.querySelector("input[name='action']").value = "approve";
             form.submit();
         })
     }
 
-    var unapprove = document.querySelectorAll('.unapprove--button');
-    for(var i = 0; i < approve.length; i++) {
-        unapprove[i].addEventListener('click', function() {
+    var seller_unapprove = document.querySelectorAll('.seller-unapprove--button');
+    for(var i = 0; i < seller_unapprove.length; i++) {
+        seller_unapprove[i].addEventListener('click', function() {
             var user_id = this.getAttribute('data-id');
-            var form = document.getElementById('approve-form');
+            var form = document.getElementById('seller-approve-form');
             form.querySelector("input[name='id']").value = user_id;
             form.querySelector("input[name='action']").value = "unapprove";
             form.submit();

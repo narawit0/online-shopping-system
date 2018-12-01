@@ -3,10 +3,14 @@
     if(isset($_POST['login'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        if(!User::verify_user($username, $password)) {
-            $message = "Username or Password is incorrect";
+        if(!User::is_admin_approved($username)) {
+            if(!User::verify_user($username, $password)) {
+                $message = "Username or Password is incorrect";
+            } else {
+                header("Location: index.php");
+            }
         } else {
-            header("Location: index.php");
+            $message = "Please wait for admin approve";
         }
     }
 ?>

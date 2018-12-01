@@ -10,7 +10,6 @@
             $row = mysqli_fetch_assoc($product_result);
             $product_quanities = $row['quanity'];
     
-            $cart = new Cart();
             $cart->pro_id = $pro_id;
             $cart->quanity = $quanity;
             $cart->user_id = $_SESSION['id'];
@@ -32,7 +31,6 @@
                 $message = "ไม่สามารถเพิ่มจำนวนสินค้ามากกว่านี้";
             }
         } elseif ($_POST['action']  == "delete") {
-            $cart = new Cart();
             $cart->pro_id = $_POST['item_id'];
             $cart->user_id = $_SESSION['id'];
 

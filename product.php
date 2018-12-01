@@ -98,4 +98,6 @@
         }
     }
 
+    $product = new Product();
+
 ?>

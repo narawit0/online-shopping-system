@@ -16,4 +16,6 @@
             return $database->query($sql);
         }
     }
+
+    $payment = new Payment();
 ?>

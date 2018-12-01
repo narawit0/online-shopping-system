@@ -6,7 +6,6 @@
         </div>
         <?php 
         if(isset($_SESSION['id'])) {
-            $order = new Order();
             $order->user_id = $_SESSION['id'];
             $query_order_id_result = $order->get_all_order_by_user_id();
 

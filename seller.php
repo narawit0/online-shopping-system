@@ -46,4 +46,6 @@
             return $the_object_array;
         }
     }
+
+    $seller = new Seller();
 ?>

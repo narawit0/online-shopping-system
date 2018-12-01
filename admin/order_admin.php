@@ -16,4 +16,6 @@
             return $database->query($sql);
         }
     }
+
+    $order_admin = new OrderAdmin();
 ?>

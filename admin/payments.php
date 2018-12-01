@@ -2,18 +2,15 @@
 <?php 
     if(isset($_POST['action'])) {
         if($_POST['action'] == "approve") {
-            $payment_admin = new PaymentAdmin();
             $payment_admin->id = $_POST['id'];
             if($payment_admin->confirm_payment()) {
                 $user_payment_result = $payment_admin->get_user_payments();
                 $row = mysqli_fetch_assoc($user_payment_result);
-                $order_admin = new OrderAdmin();
                 $order_admin->order_id = $row['order_id'];
                 $order_admin->user_id = $row['id'];
                 $order_admin->update_payment_status();
             }
         } elseif($_POST['action'] == "unapprove") {
-            $payment_admin = new PaymentAdmin ();
             $payment_admin->id = $_POST['id'];
             $payment_admin->delete_payment_by_id();
         }
@@ -36,7 +33,6 @@
     </thead>
     <tbody>
 <?php 
-    $payment_admin = new PaymentAdmin();
     $payment_result = $payment_admin->get_all_payments();
 
     while($row = mysqli_fetch_assoc($payment_result)) {

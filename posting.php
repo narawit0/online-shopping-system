@@ -1,7 +1,6 @@
 <?php include("includes/header.php"); ?>
 <?php 
     if(isset($_POST['add_product'])) {
-        $product = new Product();
         $product->product_name        = $_POST['product_name'];
         $product->product_price       = $_POST['product_price'];
         $product->product_quanity     = $_POST['product_quanity'];

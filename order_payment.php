@@ -1,7 +1,6 @@
 <?php include("includes/header.php"); ?>
 <?php 
     if(isset($_POST['submit'])) {
-        $payment = new Payment();
         $payment->order_id      = $_POST['order_id'];
         $payment->cust_id       = $_SESSION['id'];
         $payment->bank          = $_POST['bank'];
@@ -30,7 +29,6 @@
                 <label for="order_id">รหัสการสั่งซื้อ</label>
                 <select name="order_id" id="" class="form-control">
                 <?php 
-                    $order = new Order();
                     $order->user_id = $_SESSION['id'];
                     $query_order_result = $order->get_all_order_by_user_id();
                     while($row = mysqli_fetch_assoc($query_order_result)) {

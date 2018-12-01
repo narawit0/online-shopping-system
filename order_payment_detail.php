@@ -1,6 +1,5 @@
 <?php include("includes/header.php"); ?>
 <?php   
-        $order = new Order();
         $order->user_id = $_SESSION['id'];
         $query_result = $order->get_last_order_by_user_id();
         $row = mysqli_fetch_assoc($query_result);

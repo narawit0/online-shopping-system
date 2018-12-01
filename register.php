@@ -1,7 +1,6 @@
 <?php include("includes/header.php"); ?>
 <?php 
     if(isset($_POST['submit'])) {
-        $user = new User();
         $user->first_name   = $_POST['first_name'];
         $user->last_name    = $_POST['last_name'];
         $user->username     = $_POST['username'];

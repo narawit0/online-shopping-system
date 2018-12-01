@@ -70,4 +70,6 @@
 
 
     }
+
+    $order = new Order();
 ?>

@@ -7,7 +7,6 @@
 <?php 
     if(!Seller::check_duplicate_seller($_SESSION['username'])) {
         if(isset($_POST['register_seller'])) {
-            $seller = new Seller();
             $seller->username = $_SESSION['username'];
             $seller->bank_number = $_POST['bank_number'];
             $seller->bank_account = $_POST['bank_account'];

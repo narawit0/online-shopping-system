@@ -15,7 +15,6 @@
     </thead>
     <tbody>
 <?php 
-    $user_admin  = new UserAdmin();
     $user_result = $user_admin->find_all_users();
 
     foreach($user_result as $value) {

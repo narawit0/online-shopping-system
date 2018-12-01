@@ -33,4 +33,6 @@
             return $database->query($sql);
         }
     }
+
+    $seller_admin = new SellerAdmin();
 ?>

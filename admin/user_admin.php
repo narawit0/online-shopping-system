@@ -40,4 +40,6 @@
         }
 
     }
+
+    $user_admin  = new UserAdmin();
 ?>

@@ -42,7 +42,6 @@
                     </thead>
                     <tbody>
                         <?php 
-                            $cart = new Cart();
                             $cart->user_id = $_SESSION['id'];
                             $result = $cart->show_products_in_cart();
                             $i = 1;

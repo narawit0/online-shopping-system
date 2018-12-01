@@ -2,11 +2,9 @@
 <?php 
     if(isset($_POST['action'])) {
         if($_POST['action'] == "approve") {
-            $user_admin = new UserAdmin();
             $user_admin->id = $_POST['id'];
             $user_admin->update_status_new_user();
         } elseif($_POST['action'] == "unapprove") {
-            $user_admin = new UserAdmin();
             $user_admin->id = $_POST['id'];
             $user_admin->delete_user_by_id();
         }
@@ -28,7 +26,6 @@
     </thead>
     <tbody>
 <?php 
-    $user_admin = new UserAdmin();
     $user_result = $user_admin->find_user_by_status_pending();
 
     foreach($user_result as $value) {

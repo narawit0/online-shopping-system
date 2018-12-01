@@ -2,11 +2,9 @@
 <?php 
     if(isset($_POST['action'])) {
         if($_POST['action'] == "approve") {
-            $seller_admin = new SellerAdmin();
             $seller_admin->id = $_POST['id'];
             $seller_admin->update_seller_status();
         } elseif($_POST['action'] == "unapprove") {
-            $seller_admin = new SellerAdmin();
             $seller_admin->id = $_POST['id'];
             $seller_admin->delete_user_by_id();
         }

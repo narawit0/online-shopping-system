@@ -2,11 +2,9 @@
 <?php 
     if(isset($_POST['action'])) {
         if($_POST['action'] == "approve") {
-            $payment_admin = new PaymentAdmin();
             $payment_admin->id = $_POST['id'];
             $payment_admin->confirm_payment();
         } elseif($_POST['action'] == "unapprove") {
-            $payment_admin = new PaymentAdmin ();
             $payment_admin->id = $_POST['id'];
             $payment_admin->delete_payment_by_id();
         }
@@ -25,7 +23,6 @@
     </thead>
     <tbody>
 <?php 
-    $order_admin = new OrderAdmin();
     $order_result = $order_admin->get_all_orders();
 
     while($row = mysqli_fetch_assoc($order_result)) {

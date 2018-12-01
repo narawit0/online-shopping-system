@@ -42,4 +42,6 @@
             return $database->query($sql);
         }
     }
+
+    $payment_admin = new PaymentAdmin();
 ?>

@@ -12,7 +12,6 @@
     $products = Product::select_products_by_cat_id($cat_id); 
     while($row = mysqli_fetch_assoc($products)) {
         $product_quanities = $row['quanity'];
-        $cart = new Cart();
         $cart->pro_id = $row['id'];
         $cart_result = $cart->check_cart_products_quanity();
 

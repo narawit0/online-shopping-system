@@ -32,6 +32,7 @@
 
         }
 
+
         public function find_by_query($sql) {
             global $database;
             $result_set = $database->query($sql);
@@ -95,6 +96,14 @@
             $database->query($sql);
 
             return (mysqli_affected_rows($database->connection) == 1) ? true : false;
+        }
+
+        public function delete_user_by_id() {
+            global $database;
+
+            $sql = "DELETE FROM users WHERE id = {$this->id}";
+
+            return $database->query($sql);
         }
     }
 ?>

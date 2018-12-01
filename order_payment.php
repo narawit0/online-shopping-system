@@ -10,12 +10,7 @@
     
         $payment->confirm = 'no';
         if($payment->create_payment()) {
-            $order = new Order();
-            $order->order_id = $_POST['order_id'];
-            $order->user_id  = $_SESSION['id'];
-            if($order->update_payment_status()) {
-                $message = "เราจะทำการตรวจสอบการจ่ายเงินของท่านแล้วจะจัดส่งของให้";
-            }
+            $message = "เราจะทำการตรวจสอบการจ่ายเงินของท่านแล้วจะจัดส่งของให้";
         }
     }
 ?>

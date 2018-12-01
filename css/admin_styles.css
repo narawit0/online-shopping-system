@@ -128,3 +128,18 @@ a {
     background-color: var(--color-primary);
 }
 
+.admin--table > tfoot {
+    background-color: var(--color-white);;
+    color: var(--color-primary);
+}
+
+/* ORDER DETAILS / USER DETAILS */
+.user-details {
+    display: flex;
+    font-size: 1.6rem;
+    color: var(--color-white);
+    justify-content: space-between;
+    width: 70rem;
+    margin-bottom: 2rem;
+}
+

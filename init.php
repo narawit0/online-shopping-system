@@ -14,4 +14,6 @@
     require_once("payment.php");
     require_once("admin/user_admin.php");
     require_once("admin/seller_admin.php");
+    require_once("admin/payment_admin.php");
+    require_once("admin/order_admin.php");
 ?>

@@ -22,7 +22,7 @@
                     สถานะการจ่ายเงิน: <?php echo $row['paid']; ?>
                 </span>
                 <span class="order-history--delivery">
-                    สถานะการจ่ายเงิน: <?php echo $row['delivery']; ?>
+                    สถานะการส่งของ: <?php echo $row['delivery']; ?>
                 </span>
             </div>
             <div class="order-history--cart">

@@ -47,8 +47,16 @@
                             </svg>
                             <?php echo $_SESSION['first_name']; ?></a>
                             <ul class="dropdown-list">
-                                <li><a href="profile.php">Profile</a></li>
-                                <li><a href="logout.php">Log out</a></li>
+                                <?php 
+                                if($_SESSION['role'] == 'user') {
+                                ?>
+                                    <li><a href="profile.php">Profile</a></li>
+                                    <li><a href="logout.php">Log out</a></li>
+                                <?php } else { ?>
+                                    <li><a href="profile.php">Profile</a></li>
+                                    <li><a href="admin/index.php">Admin</a></li>
+                                    <li><a href="logout.php">Log out</a></li>
+                                <?php } ?>
                             </ul>
                         </li>
                     </ul>

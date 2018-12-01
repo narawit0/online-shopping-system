@@ -51,6 +51,15 @@
             return $database->query($sql);
         }
 
+        public function get_user_details_by_order_id() {
+            global $database;
+
+            $sql = "SELECT orders.id, users.first_name, users.last_name, users.email, users.phone, users.address FROM orders INNER JOIN users ON orders.user_id = users.id WHERE orders.id = {$this->order_id}";
+
+            return $database->query($sql);
+
+        }
+
         public function update_payment_status() {
             global $database;
 

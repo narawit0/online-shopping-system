@@ -14,8 +14,6 @@
         public $hashed_password;
 
         public function find_user_by_status_pending() {
-            global $database;
-
             $sql = "SELECT * FROM users WHERE status = 'pending'";
 
             $the_result_array = static::find_by_query($sql);
@@ -31,6 +29,14 @@
             $database->query($sql);
 
             return mysqli_affected_rows($database->connection);
+        }
+
+        public function find_all_users() {
+            $sql = "SELECT * FROM users";
+
+            $the_result_array = static::find_by_query($sql);
+
+            return $the_result_array;
         }
 
     }

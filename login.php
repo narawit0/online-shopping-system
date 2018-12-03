@@ -3,7 +3,7 @@
     if(isset($_POST['login'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        if(!User::is_admin_approved($username)) {
+        if(User::is_admin_approved($username)) {
             if(!User::verify_user($username, $password)) {
                 $message = "Username or Password is incorrect";
             } else {

@@ -82,6 +82,19 @@ function get_cart_count() {
     xmlhttp.send();
 }
 
+function get_delivery_count() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "delivery_count.php", true);
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('delivery--count--display').innerHTML = this.responseText;
+            console.log(this.responseText);
+        }
+    }
+    xmlhttp.send();
+}
+
 
 
 get_cart_count();
+get_delivery_count()

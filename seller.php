@@ -34,16 +34,13 @@
             return $database->query($sql);
         }
 
-        public function find_by_query($sql) {
+
+        public function get_seller_id() {
             global $database;
-            $result_set = $database->query($sql);
-            $the_object_array = array();
 
-            while($row = mysqli_fetch_assoc($result_set)) {
-                $the_object_array[] = Seller::instantiation($row);
-            }
+            $sql = "SELECT id FROM sellers WHERE username = '{$this->username}'";
 
-            return $the_object_array;
+            return $database->query($sql);
         }
     }
 

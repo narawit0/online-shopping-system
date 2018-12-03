@@ -80,7 +80,19 @@
                     <?php
                         } 
                     ?>
+                    <li class="category-item"><a href="order_payment.php">แจ้งการโอนเงิน</a></li>
+                    <li class="category-item"><a href="order_history.php">ประวัติการสั่งซื้อ</a></li>
                 </ul>
+                <div class="delivery-orders">
+                    <a href="show_delivery.php">
+                        <svg class="icon icon-truck">
+                            <use xlink:href="img/sprite.svg#icon-truck">
+                        </svg>
+                        <div class="delivery--count">
+                            <span id="delivery--count--display"></span>
+                        </div>
+                    </a>
+                </div>
                 <a href="selling.php" class="sell-btn">อยากขาย</a>
             </div>
         </nav>

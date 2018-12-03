@@ -8,7 +8,10 @@
         $product->product_category    = $_POST['product_category'];
 
         $product->set_file($_FILES['file_upload']);
-        $seller_id = $_SESSION['id'];
+        $seller->username = $_SESSION['username'];
+        $seller_result = $seller->get_seller_id();
+        $row = mysqli_fetch_assoc($seller_result);
+        $seller_id = $row['id'];
 
         if($product->upload_product_image()) {
             if($product->create_product_image()) {

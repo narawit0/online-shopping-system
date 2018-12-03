@@ -9,18 +9,16 @@
         $user->phone        = $_POST['phone'];
         $user->address      = $_POST['address'];
 
+
         
-        if($user->check_duplicate_user() > 0) {
+        if($user->check_duplicate_user()) {
             $message = "Email หรือ Username นี้ถูกใช้ไปใช้แล้วกรุณากรอกข้อมูลใหม่อีกครั้ง";
         } else {
             $user->hashed_password();
-            $user->create_user();
-            if(User::verify_user($user->username, $user->password)) {
-                header("Location: index.php");
+            if($user->create_user()) {
+                $message = "Please wait for admin approve";
             }
-
         }
-    
     }
 ?>
 <div class="container">

@@ -5,7 +5,7 @@
 
         $row = mysqli_fetch_assoc($quanity);
 
-        $count = $row['total'];
+        $row['total'] == 0 ? $count = 0 : $count = $row['total'];
 
         echo $count;
     }

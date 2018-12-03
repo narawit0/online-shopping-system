@@ -19,7 +19,7 @@
             $sql .= "VALUES ('{$this->first_name}', '{$this->last_name}', '{$this->username}', '{$this->hashed_password}', ";
             $sql .= "'{$this->email}', '{$this->phone}', '{$this->address}', 'user', 'pending')";
 
-            $database->query($sql);
+            return $database->query($sql);
         }
 
         public static function find_user_by_id($id) {
@@ -109,9 +109,11 @@
         public static function is_admin_approved($username) {
             global $database;
 
-            $sql = "SELECT * FROM users WHERE username = '{$username}' AND status = 'pending'";
+            $sql = "SELECT * FROM users WHERE username = '{$username}' AND status = 'approved'";
 
             return mysqli_num_rows($database->query($sql));
         }
     }
+
+    $user = new User();
 ?>

@@ -138,6 +138,12 @@ li {
     height: 2rem;
 }
 
+.icon.icon-truck {
+    fill: var(--color-primary-light);
+    width: 4rem;
+    height: 4rem;
+}
+
 /* CART */
 
 .cart {
@@ -171,6 +177,7 @@ li {
 /* USER DISPLAY AND REGIST BUTTON*/
 .user {
     position: relative;
+    z-index: 2;
 }
 
 
@@ -226,6 +233,7 @@ li {
 
 .category {
     display: flex;
+    flex: 1;
 }
 
 .category-item {
@@ -843,6 +851,12 @@ li {
     font-weight: bold;
 }
 
+.show-cart--table--order > tfoot {
+    background-color: var(--color-secondary-light);
+    color: var(--color-grey-dark-1);
+    font-weight: bold;
+}
+
 .order-history--header {
     display: flex;
     margin-bottom: 2rem;
@@ -894,4 +908,101 @@ li {
     background-color: var(--color-secondary-dark);
     padding: 2rem;
     border-radius: 2rem;
+}
+
+/* DELIVERY ORDER */
+
+.delivery-orders {
+    position: relative;
+    margin-right: 2rem;
+}
+
+.delivery--count {
+    background-color: var(--color-white);
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    padding: .2rem;
+    position: absolute;
+    z-index: 1;
+    top:0;
+    right: -1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#delivery--count--display {
+    color: var(--color-grey-dark-1);
+}
+
+.show-delivery {
+    margin-top: 2rem;
+    border: 2px solid var(--color-primary-dark);
+    background-color: var(--color-grey-dark-1);
+    padding: 0 10rem 5rem 10rem;
+    margin-bottom: 2.5rem;
+}
+
+.show-delivery--title {
+    border-bottom: 2px solid var(--color-primary-dark);
+    padding: 2rem 0;
+    font-weight: bold;
+    margin-bottom: 2.5rem;
+    color: var(--color-white);
+}
+
+/* USER DETAILS */
+
+.orders {
+    display: flex;
+    flex-direction: column;
+}
+.orders:not(:last-child) {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-white);
+}
+.user-details {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    min-height: 12rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+/* SHOW DELIVERY TABLE*/
+
+.show-delivery--table  {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--color-grey-dark-1);
+}
+.show-delivery--table * {
+    padding: 1rem;
+    text-align: center;
+}
+
+.show-delivery--table > thead {
+    background-color: var(--color-primary-light);
+}
+
+.show-delivery--table > tbody > tr:nth-child(odd) {
+    background-color: var(--color-secondary-dark);
+}
+
+.show-delivery--table > tbody > tr:nth-child(even) {
+    background-color: var(--color-secondary-light);
+}
+
+/*DELIVERED BUTTON */
+
+.delivered-button {
+    align-self: flex-end;
+    padding: 1rem;
+    margin-bottom: 2rem;
 }

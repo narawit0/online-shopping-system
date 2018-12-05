@@ -96,6 +96,16 @@
 
             return mysqli_affected_rows($database->connection);
         }
+
+        public function increase_product_quanity_in_stock() {
+            global $database;
+
+            $sql = "UPDATE products SET quanity = quanity + {$this->product_quanity} WHERE id = {$this->id}";
+
+            $database->query($sql);
+
+            return mysqli_affected_rows($database->connection);
+        }
     }
 
     $product = new Product();

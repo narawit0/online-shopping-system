@@ -1,4 +1,18 @@
 <?php include("includes/header.php"); ?>
+<?php 
+    if(isset($_POST['order_id'])) {
+        $order->order_id = $_POST['order_id'];
+        $query_remove_order_result = $order->get_order_details_by_order_id();
+        if($order->delete_order()) {
+            $order->delete_order_details_by_order_id();
+            while($row = mysqli_fetch_assoc($query_remove_order_result)) {
+                $product->id = $row['pro_id'];
+                $product->product_quanity = $row['quanity'];
+                $product->increase_product_quanity_in_stock();
+            }
+        }
+    }
+?>
 <div class="container">
     <div class="order-history">
         <div class="order-history--title">
@@ -39,14 +53,14 @@
                 $total_price = 0;
                 $i = 1;
                 $query_order_details_result = $order->get_order_details_by_order_id();
-                while($row = mysqli_fetch_assoc($query_order_details_result)) {
-                    $total_price +=  ($row['quanity'] * $row['price']);
+                while($order_row = mysqli_fetch_assoc($query_order_details_result)) {
+                    $total_price +=  ($order_row['quanity'] * $order_row['price']);
             ?>
                     <tr>
                         <td><?php echo $i; ?></td>
-                        <td><?php echo $row['name'];?></td>
-                        <td><?php echo $row['quanity'];?></td>
-                        <td><?php echo number_format($row['quanity'] * $row['price']);?></td>
+                        <td><?php echo $order_row['name'];?></td>
+                        <td><?php echo $order_row['quanity'];?></td>
+                        <td><?php echo number_format($order_row['quanity'] * $order_row['price']);?></td>
                     </tr>
             <?php
                 $i++;
@@ -62,6 +76,13 @@
                     </tr>
                 </tfoot>
             </table>
+            <?php 
+                if($row['paid'] == 'no') {
+            ?>
+                <button class="order-button--cancle" data-id=<?php echo $row['id']; ?>>ยกเลิกการสั่งซื้อ</button>
+            <?php
+                }
+                ?>
             </div> <!-- order-history--cart -->
         </div> <!-- end order-history--block -->
         <?php
@@ -70,5 +91,19 @@
         ?>
     </div>
 </div>
+<form id="order-form" method="POST">
+    <input type="hidden" name="order_id">
+</form>
 <?php include("includes/footer.php"); ?>
+<script type="text/javascript">
+    var cancle_button = document.querySelectorAll('.order-button--cancle');
+    for(var i = 0; i < cancle_button.length; i++) {
+        cancle_button[i].addEventListener('click', function() {
+            var order_id = this.getAttribute('data-id');
+            var form = document.getElementById('order-form');
+            form.querySelector("input[name='order_id']").value = order_id;
+            form.submit();
+        });
+    }
+</script>
 

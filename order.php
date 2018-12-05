@@ -93,6 +93,24 @@
             return $database->query($sql);
         }
 
+        public function delete_order() {
+            global $database;
+
+            $sql = "DELETE FROM orders WHERE id = {$this->order_id}";
+
+            return $database->query($sql);
+        }
+
+        public function delete_order_details_by_order_id() {
+            global $database;
+
+            $sql = "DELETE FROM order_details WHERE order_id = {$this->order_id}";
+
+            return $database->query($sql);
+        }
+
+
+
 
     }
 

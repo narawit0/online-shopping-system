@@ -38,6 +38,9 @@
                 header("Location: show_cart.php");
             }
 
+        } elseif ($_POST['action'] == 'clear' ) {
+            $cart->user_id = $_SESSION['id'];
+            $cart->clear_cart();
         }
     }
 
@@ -142,7 +145,13 @@
         form.action = "order_cust.php";
         form.method = "POST";
         form.submit();
+    })
 
+    var clear_button = document.querySelector('.clear-button');
+    clear_button.addEventListener('click', function() {
+        var form = document.querySelector("form#update-cart");
+        form.querySelector("input[name='action']").value = "clear";
+        form.submit();
     })
 
 </script>

@@ -26,7 +26,7 @@ function show_all_products_by_cat_id(cat_id) {
 <main class="main-content">
         <div class="container">
             <aside class="main-content--left">
-                test
+            <input type="range" min="1" max="100" value="50">
             </aside>
             <section id="main-conntent--right" class="main-conntent--right">
             <?php 
@@ -38,9 +38,26 @@ function show_all_products_by_cat_id(cat_id) {
             </script>
             <?php
                 } else {
+                    if (isset($_GET['page'])) {
+                        $page = $_GET['page'];
+                    } else {
+                        $page = 1;
+                    }
             ?>
             <script>
-                show_all_products();
+                function show_all_products(page) {
+                        var xmlhttp = new XMLHttpRequest();
+                        xmlhttp.open("GET", "show_all_products.php?page= " + page, true);
+                        xmlhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                document.getElementById('main-conntent--right').innerHTML = this.responseText;
+                                console.log(this.responseText);
+                            }
+                        }
+                        xmlhttp.send();
+                }
+
+                show_all_products(<?php echo $page; ?>);
             </script>
             <?php
                 }

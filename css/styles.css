@@ -398,6 +398,8 @@ li {
 .main-content--left {
     flex-basis: 30%;
     padding: 2rem;
+    background-color: blue;
+    min-height: 40rem;
 }
 
 .main-conntent--right {
@@ -1016,4 +1018,15 @@ li {
     align-self: flex-end;
     padding: 1rem;
     margin-bottom: 2rem;
+}
+
+.pages {
+    align-self: flex-end;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pages li:not(:last-child) {
+    margin-right: 2rem;
 }

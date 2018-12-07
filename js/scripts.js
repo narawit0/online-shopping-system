@@ -44,9 +44,9 @@ function add_product_to_cart(pro_id, cat_id, quanity=1) {
     xmlhttp.send("id=" + pro_id + "&quanity=" + quanity);
 }
 
-function show_all_products() {
+function show_all_products(page) {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "show_all_products.php", true);
+    xmlhttp.open("GET", "show_all_products.php?page= " + page, true);
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById('main-conntent--right').innerHTML = this.responseText;

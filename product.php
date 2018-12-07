@@ -55,9 +55,24 @@
             return $database->query($sql);
         }
 
+        public static function select_products_limited($page) {
+            global $database;
+            
+            $per_page = 9;
+            if($page == "" || $page == 1) {
+                $page_start = 0;
+            } else {
+                $page_start = ($page * $per_page) - $per_page;
+            }
+
+            $sql = "SELECT products.id, products.name, products.price, products.quanity, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id LIMIT $page_start , $per_page";
+
+            return $database->query($sql);
+        }
+
         public static function select_all_products() {
             global $database;
-
+            
             $sql = "SELECT products.id, products.name, products.price, products.quanity, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id";
 
             return $database->query($sql);

@@ -50,19 +50,17 @@ function show_all_products(page) {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById('main-conntent--right').innerHTML = this.responseText;
-            console.log(this.responseText);
         }
     }
     xmlhttp.send();
 }
 
-function show_all_products_by_cat_id(cat_id) {
+function show_all_products_by_cat_id(cat_id, page) {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "show_products_cat_id.php?cat_id= " + cat_id, true);
+    xmlhttp.open("GET", "show_products_cat_id.php?cat_id= " + cat_id + "&page= " + page, true);
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById('main-conntent--right').innerHTML = this.responseText;
-            console.log(this.responseText);
         }
     }
     xmlhttp.send();
@@ -76,7 +74,6 @@ function get_cart_count() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById('cart--count--display').innerHTML = this.responseText;
-            console.log(this.responseText);
         }
     }
     xmlhttp.send();
@@ -88,7 +85,6 @@ function get_delivery_count() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById('delivery--count--display').innerHTML = this.responseText;
-            console.log(this.responseText);
         }
     }
     xmlhttp.send();

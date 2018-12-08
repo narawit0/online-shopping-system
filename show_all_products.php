@@ -9,11 +9,15 @@
 <?php
 if(empty($_GET['cat_id']) || !isset($_GET['cat_id'])) {
     $page = $_GET['page'];
+
     $products = Product::select_products_limited($page);
+
+    /* COUNT PAGES */
     $all_products = Product::select_all_products();
     $product_per_page = 9;
     $count_products = mysqli_num_rows($all_products);
     $pages = ceil($count_products / 9); 
+
     while($row = mysqli_fetch_assoc($products)) {
         $product_quanities = $row['quanity'];
         $cart->pro_id = $row['id'];
@@ -47,10 +51,16 @@ if(empty($_GET['cat_id']) || !isset($_GET['cat_id'])) {
     <div class="pages">
        <?php 
         for($i = 1; $i <= $pages; $i++) {
-            echo "<li><a href='index.php?page=$i'>$i</a></li>";
+            if($i == $page) {
+                echo "<li><a class='active-link' href='index.php?page=$i'>$i</a></li>";
+            } else {
+                echo "<li><a href='index.php?page=$i'>$i</a></li>";
+            }
         }
        ?>
     </div>
 <?php
 } 
 ?>
+
+

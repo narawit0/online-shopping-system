@@ -78,7 +78,22 @@
             return $database->query($sql);
         }
 
-        public static function select_products_by_cat_id($id) {
+        public static function select_products_by_cat_id_limited($id, $page) {
+            global $database;
+
+            $per_page = 9;
+            if($page == "" || $page == 1) {
+                $page_start = 0;
+            } else {
+                $page_start = ($page * $per_page) - $per_page;
+            }
+
+            $sql = "SELECT products.id, products.name, products.quanity, products.price, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id WHERE products.cat_id = {$id} LIMIT $page_start, $per_page";
+
+            return $database->query($sql);
+        }
+
+        public static function select_all_products_by_cat_id($id) {
             global $database;
 
             $sql = "SELECT products.id, products.name, products.quanity, products.price, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id WHERE products.cat_id = {$id}";

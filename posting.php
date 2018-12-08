@@ -51,7 +51,7 @@
 
             <div class="form-group">
                 <label for="product_quanity">จำนวนสินค้า</label>
-                <input type="number" name="product_quanity" class="form-control" required>
+                <input type="number" name="product_quanity" min="1" value="1" class="form-control" required>
             </div>
 
             <div class="form-group">

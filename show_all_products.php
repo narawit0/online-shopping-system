@@ -1,15 +1,9 @@
 <?php include("init.php"); ?>
-<style>
-    .product {
-        font-size: 1.2rem;
-        text-align: center;
-        height: 30rem;
-    }
-</style>
 <?php
 if(empty($_GET['cat_id']) || !isset($_GET['cat_id'])) {
     $page = $_GET['page'];
 
+    /* QUERY PRODUCT WITH LIMITED NUMBER BY PAGE*/
     $products = Product::select_products_limited($page);
 
     /* COUNT PAGES */

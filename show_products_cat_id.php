@@ -8,7 +8,7 @@
 </style>
 <?php
     $cat_id = $_GET['cat_id'];
-    $page = $_GET['page'];
+    $page = (int)$_GET['page'];
 
     /* QUERY PRODUCT WITH LIMITED NUMBER BY PAGE*/
     $products = Product::select_products_by_cat_id_limited($cat_id, $page);

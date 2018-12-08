@@ -26,7 +26,19 @@ function show_all_products_by_cat_id(cat_id) {
 <main class="main-content">
         <div class="container">
             <aside class="main-content--left">
-            <input type="range" min="1" max="100" value="50">
+            <div class="search--price">
+                <h4>ราคา</h4>
+            </div>
+            <section class="range-slider">
+                <div class="range-price">
+                    <span class="price-1">500</span>
+                    <span>-</span>
+                    <span class="price-2">15000</span>
+                </div>
+                <input type="range" id="range-1" value="500" min="500" max="15000">
+                <input type="range" id="range-2" value="15000" min="500" max="15000">
+            </section>
+            <button class="price-search">ค้นหา</button>
             </aside>
             <section id="main-conntent--right" class="main-conntent--right">
             <?php 
@@ -49,7 +61,7 @@ function show_all_products_by_cat_id(cat_id) {
                     }
                     xmlhttp.send();
                 }
-                
+
                 show_all_products_by_cat_id(<?php echo $cat_id; ?>, <?php echo $page; ?>);
             </script>
             <?php

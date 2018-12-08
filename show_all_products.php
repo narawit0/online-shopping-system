@@ -1,7 +1,8 @@
 <?php include("init.php"); ?>
 <?php
 if(empty($_GET['cat_id']) || !isset($_GET['cat_id'])) {
-    $page = $_GET['page'];
+    $page = (int)$_GET['page'];
+
 
     /* QUERY PRODUCT WITH LIMITED NUMBER BY PAGE*/
     $products = Product::select_products_limited($page);

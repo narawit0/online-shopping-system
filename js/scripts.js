@@ -30,7 +30,7 @@ function add_product_to_cart(pro_id, cat_id, quanity=1) {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText) {
-                alert(this.responseText);
+               alert(this.responseText);
             } else {
                 get_cart_count();
                 if(!cat_id) {
@@ -89,6 +89,36 @@ function get_delivery_count() {
     }
     xmlhttp.send();
 }
+
+function getVals() {
+    var parent = document.querySelector('.range-slider');
+    var slides = parent.getElementsByTagName('input');
+    var slide1 = parseFloat( slides[0].value );
+    var slide2 = parseFloat( slides[1].value );
+    if( slide1 > slide2 ){ var tmp = slide2; slide2 = slide1; slide1 = tmp; }
+
+    var price1_display = document.querySelector('.price-1');
+    var price2_display = document.querySelector('.price-2');
+    price1_display.innerHTML = new Intl.NumberFormat().format(slide1);
+    price2_display.innerHTML = new Intl.NumberFormat().format(slide2);
+}
+
+function addRangeSliderEvent (){
+    // Initialize Sliders
+    var sliderSections = document.getElementsByClassName("range-slider");
+        for( var x = 0; x < sliderSections.length; x++ ){
+          var sliders = sliderSections[x].getElementsByTagName("input");
+          for( var y = 0; y < sliders.length; y++ ){
+            if( sliders[y].type ==="range" ){
+              sliders[y].oninput = getVals;
+              // Manually trigger event first time to display values
+              sliders[y].oninput();
+            }
+          }
+        }
+  }
+
+  addRangeSliderEvent();
 
 
 

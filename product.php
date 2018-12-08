@@ -60,10 +60,11 @@
             
             $per_page = 9;
             if($page == "" || $page == 1) {
-                $page_start = 0;
+                $page_start = 1;
             } else {
-                $page_start = ($page * $per_page) - $per_page;
+                $page_start = ((int)$page * $per_page) - $per_page;
             }
+
 
             $sql = "SELECT products.id, products.name, products.price, products.quanity, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id LIMIT $page_start , $per_page";
 

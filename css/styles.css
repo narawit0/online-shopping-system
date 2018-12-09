@@ -1119,3 +1119,7 @@ input[type=range]::-webkit-slider-runnable-track {
 .price-search:focus {
     outline: none;
 }
+
+.price-search:active {
+    transform: translateY(.4rem);
+}

@@ -110,6 +110,15 @@
             return $database->query($sql); 
         }
 
+        public static function select_products_with_ranged_price_by_cat_id($cat_id, $price1, $price2){
+            global $database;
+
+            $sql  = "SELECT products.id, products.name, products.quanity, products.price, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id ";
+            $sql .= "WHERE products.cat_id = {$cat_id} AND products.price BETWEEN {$price1} AND {$price2}";
+
+            return $database->query($sql); 
+        }
+
         public static function select_products_with_ranged_price_with_limited($price1, $price2, $page){
             global $database;
 
@@ -121,6 +130,22 @@
             }
 
             $sql = "SELECT products.id, products.name, products.quanity, products.price, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id WHERE products.price BETWEEN $price1 AND $price2 LIMIT $page_start, $per_page";
+
+            return $database->query($sql); 
+        }
+
+        public static function select_products_with_ranged_price_with_limited_by_cat_id($cat_id, $price1, $price2, $page){
+            global $database;
+
+            $per_page = 9;
+            if($page == "" || $page == 1) {
+                $page_start = 0;
+            } else {
+                $page_start = ($page * $per_page) - $per_page;
+            }
+
+            $sql  = "SELECT products.id, products.name, products.quanity, products.price, product_images.image FROM products INNER JOIN product_images ON products.pro_img_id = product_images.id ";
+            $sql .= "WHERE products.cat_id = {$cat_id} AND products.price BETWEEN {$price1} AND {$price2} LIMIT {$page_start}, {$per_page}";
 
             return $database->query($sql); 
         }
@@ -173,6 +198,22 @@
             global $database;
 
             $sql = "SELECT max(price) AS max_price FROM products";
+
+            return $database->query($sql);
+        }
+
+        public static function select_min_price_of_products_by_cat_id($cat_id) {
+            global $database;
+
+            $sql = "SELECT min(price) AS min_price FROM products WHERE cat_id = {$cat_id}";
+
+            return $database->query($sql);
+        }
+
+        public static function select_max_price_of_products_by_cat_id($cat_id) {
+            global $database;
+
+            $sql = "SELECT max(price) AS max_price FROM products WHERE cat_id = {$cat_id}";
 
             return $database->query($sql);
         }

@@ -7,7 +7,7 @@
     }
 </style>
 <?php
-    $cat_id = $_GET['cat_id'];
+    $cat_id = (int)$_GET['cat_id'];
     $page = (int)$_GET['page'];
 
     /* QUERY PRODUCT WITH LIMITED NUMBER BY PAGE*/

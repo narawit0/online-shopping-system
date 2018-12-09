@@ -1,19 +1,20 @@
 <?php include("init.php"); ?>
 
 <?php 
-    if(isset($_GET['price1']) && isset($_GET['price2'])) {
+    if(isset($_GET['price1']) && isset($_GET['price2']) && isset($_GET['cat_id'])) {
         $price1 = (int)$_GET['price1'];
         $price2 = (int)$_GET['price2'];
-        $page = (int)$_GET['page'];
+        $cat_id = (int)$_GET['cat_id'];
+        $page   = (int)$_GET['page'];
 
-        $product_ranged_price = Product::select_products_with_ranged_price_with_limited($price1, $price2, $page);
+        $product_ranged_price_by_cat_id = Product::select_products_with_ranged_price_with_limited_by_cat_id($cat_id, $price1, $price2, $page);
         
-        $all_products = Product::select_products_with_ranged_price($price1, $price2);
+        $all_products_by_cat_id = Product::select_products_with_ranged_price_by_cat_id($cat_id,$price1, $price2);
         $product_per_page = 9;
-        $count_products = mysqli_num_rows($all_products);
+        $count_products = mysqli_num_rows($all_products_by_cat_id);
         $pages = ceil($count_products / 9);
 
-        while($row = mysqli_fetch_assoc($product_ranged_price)) {
+        while($row = mysqli_fetch_assoc($product_ranged_price_by_cat_id)) {
             $product_quanities = $row['quanity'];
             $cart->pro_id = $row['id'];
             $cart_result = $cart->check_cart_products_quanity();
@@ -47,9 +48,9 @@
        <?php 
         for($i = 1; $i <= $pages; $i++) {
             if($i == $page) {
-                echo "<li><a class='active-link' href='index.php?price1=$price1&price2=$price2&page=$i'>$i</a></li>";
+                echo "<li><a class='active-link' href='index.php?cat_id=$cat_id&price1=$price1&price2=$price2&page=$i'>$i</a></li>";
             } else {
-                echo "<li><a href='index.php?price1=$price1&price2=$price2&page=$i'>$i</a></li>";
+                echo "<li><a href='index.php?cat_id=$cat_id&price1=$price1&price2=$price2&page=$i'>$i</a></li>";
             }
         }
        ?>

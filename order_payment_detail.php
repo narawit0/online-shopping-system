@@ -75,9 +75,27 @@
                     <div class="payment-description--footer">
                         จากนั้นให้เข้าไปที่หน้าแจ้งการโอนเงิน แล้วทำการกรอกแบบฟอร์มให้เรียบร้อย
                     </div>
+                    <span class="or">or</span>
+                    <div class="payment-credit-card">
+                        <form name="checkoutForm" method="POST" action="checkout_payment.php">
+                            <input type="hidden" name="totalPrice" value="<?php echo $total_price * 100; ?>" />
+                            <input type="hidden" name="order_id" value="<?php echo $order->order_id; ?>"/>
+                            <script type="text/javascript" src="https://cdn.omise.co/card.js"
+                            data-key="<?php echo OMISE_PUBLIC_KEY ?>"
+                            data-image="https://arpentechnologies.com/uploads/software-de-gestion-de-supermercados.png"
+                            data-frame-label="Online Shopping"
+                            data-button-label="Pay now"
+                            data-submit-label="Submit"
+                            data-amount="<?php echo $total_price * 100; ?>"
+                            data-currency="thb"
+                            >
+                            </script>
+                    </div>
                 </div>
             </div>
         </div>
+    <!--the script will render <input type="hidden" name="omiseToken"> for you automatically-->
+</form>
     </div>
 </div>
 <?php include("includes/footer.php"); ?>

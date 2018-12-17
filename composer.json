@@ -1,0 +1,12 @@
+{
+    "name": "narawit/online_shopping",
+    "require": {
+        "omise/omise-php": "^2.10"
+    },
+    "authors": [
+        {
+            "name": "Narawit",
+            "email": "narawit.kaewbun@gmail.com"
+        }
+    ]
+}

@@ -809,6 +809,15 @@ li {
     margin-top: 2rem;
 }
 
+.or {
+    align-self: center;
+    border-radius: 50%;
+    padding: .5rem .75rem;
+    background-color: var(--color-white);
+    color: var(--color-grey-dark-1);
+    margin-top: 2rem;
+}
+
 .payment-description--title {
     margin-bottom: 2rem;
 }
@@ -817,6 +826,7 @@ li {
     background-color: var(--color-grey-dark-1);
     padding: 2rem;
 }
+
 
 /* BANK ACCOUNT */
 
@@ -833,10 +843,15 @@ li {
     justify-content: space-around;
 }
 
+.bank-account--image  {
+    height: 7rem;
+}
+
 .bank-account--image > img {
     width: 7rem;
     height: 100%;
 }
+
 
 /* ORDER HISTORY */
 
@@ -1122,4 +1137,20 @@ input[type=range]::-webkit-slider-runnable-track {
 
 .price-search:active {
     transform: translateY(.4rem);
+}
+
+/* OMISE BUTTON */
+
+.payment-credit-card > form {
+    display: flex;
+    justify-content: center;
+}
+.omise-checkout-button {
+    display: inline-block;
+    border:none;
+    padding: 2rem;
+    background-color: var(--color-grey-dark-1);
+    color: var(--color-white);
+    cursor: pointer;
+    margin-top: 2rem;
 }

@@ -9,6 +9,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
+    <script type="text/javascript" src="https://cdn.omise.co/card.js"></script>
 </head>
 <body>
 <header class="header">

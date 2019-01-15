@@ -1,8 +1,9 @@
 <?php 
     defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
-    defined('SITE_ROOT') ? null : define('SITE_ROOT', DS . 'XAMPP' . DS . 'htdocs' . DS . 'online_shopping');
+    defined('SITE_ROOT') ? null : define('SITE_ROOT', DS . 'XAMPP' . DS . 'htdocs' . DS . 'online-shopping-system');
 
+    require __DIR__ . "/vendor/autoload.php";
     require_once("config.php");
     require_once("database.php");
     require_once("session.php");

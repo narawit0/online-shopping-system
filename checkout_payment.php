@@ -11,6 +11,6 @@ if (isset($_POST['omiseToken'])) {
         $order->user_id = $_SESSION['id'];
         $order->update_payment_status();
     }
-
+    header("Location: index.php");
 } 
 ?>

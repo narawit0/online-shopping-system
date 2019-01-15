@@ -25,7 +25,6 @@
                 </li>
                 <li><a href="javascript:void(0);" class="dropdown--button">จัดการการจ่ายเงิน</a>
                     <ul class="dropdown-list">
-                        <li><a href="new_payments.php">การแจ้งการจ่ายเงินใหม่</a></li>
                         <li><a href="payments.php">การแจ้งการจ่ายเงินทั้งหมด</a></li>
                     </ul>
                 </li>

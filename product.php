@@ -60,7 +60,7 @@
             
             $per_page = 9;
             if($page == "" || $page == 1) {
-                $page_start = 1;
+                $page_start = 0;
             } else {
                 $page_start = ((int)$page * $per_page) - $per_page;
             }

@@ -11,7 +11,7 @@
         public function confirm_payment() {
             global $database;
 
-            $sql = "UPDATE payment SET confirm = 'yes' WHERE id = {$this->id}";
+            $sql = "UPDATE payments SET confirm = 'yes' WHERE id = {$this->id}";
 
             $database->query($sql);
 
@@ -21,7 +21,7 @@
         public function delete_payment_by_id() {
             global $database;
 
-            $sql = "DELETE FROM payment WHERE id = {$this->id}";
+            $sql = "DELETE FROM payments WHERE id = {$this->id}";
 
             return $database->query($sql);
         }
@@ -29,7 +29,7 @@
         public function get_all_payments() {
             global $database;
 
-            $sql = "SELECT payment.*, users.first_name, users.last_name FROM payment INNER JOIN users ON payment.cust_id = users.id";
+            $sql = "SELECT payments.*, users.first_name, users.last_name FROM payments INNER JOIN users ON payments.cust_id = users.id";
 
             return $database->query($sql);
         }
@@ -37,7 +37,7 @@
         public function get_user_payments() {
             global $database;
 
-            $sql = "SELECT users.*, payment.order_id FROM payment INNER JOIN users ON payment.cust_id = users.id WHERE payment.id = {$this->id}";
+            $sql = "SELECT users.*, payments.order_id FROM payments INNER JOIN users ON payments.cust_id = users.id WHERE payments.id = {$this->id}";
 
             return $database->query($sql);
         }

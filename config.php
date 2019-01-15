@@ -1,0 +1,8 @@
+<?php
+
+define("DB_HOST", "YOUR_DB_HOST");
+define("DB_USER", "YOUR_DB_USERNAME");
+define("DB_PASSWORD", "YOUR_DB_PASSWORD");
+define("DB_NAME", "YOUR_DB_NAME");
+define("OMISE_PUBLIC_KEY", "YOUR_OMISE_PUBLIC_KEY");
+define("OMISE_SECRET_KEY", "YOUR_OMISE_SECRET_KEY");

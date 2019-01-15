@@ -10,7 +10,7 @@
         public function create_payment() {
             global $database;
 
-            $sql  = "INSERT INTO payment (order_id, cust_id, bank, amount, date_transfer, confirm) ";
+            $sql  = "INSERT INTO payments (order_id, cust_id, bank, amount, date_transfer, confirm) ";
             $sql .= "VALUES({$this->order_id}, {$this->cust_id}, '{$this->bank}', '{$this->amount}', '{$this->date_transfer}', '{$this->confirm}')";
             
             return $database->query($sql);

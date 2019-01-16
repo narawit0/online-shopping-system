@@ -87,6 +87,14 @@ CREATE TABLE `cart` (
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 
+CREATE TABLE `users_logged_in` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+ `last_update` datetime NOT NULL,
+ PRIMARY KEY (`id`),
+ KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
 
 
 

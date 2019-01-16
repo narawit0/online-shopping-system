@@ -39,14 +39,17 @@
                     </a>
                 </div>
                 <div class="user">
-                    <?php if(isset($_SESSION['first_name'])) {
+                    <?php if(isset($_SESSION['username'])) {
                     ?>
                     <ul>
                         <li class="user--name"><a href="javascript:void(0)">
                         <svg class="icon icon-user">
                                 <use xlink:href="img/sprite.svg#icon-user">
                             </svg>
-                            <?php echo $_SESSION['first_name']; ?></a>
+                            <?php 
+                                $user = User::find_user_by_id($_SESSION['id']);
+                                echo $user->first_name;
+                            ?></a>
                             <ul class="dropdown-list">
                                 <?php 
                                 if($_SESSION['role'] == 'user') {

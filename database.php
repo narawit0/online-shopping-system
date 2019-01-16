@@ -8,6 +8,7 @@
 
         private function connect() {
             $this->connection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+            mysqli_set_charset($this->connection, "utf8");
         }
 
         public function query($sql) {

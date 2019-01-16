@@ -27,7 +27,7 @@
         <form action="" method="POST">
             <div class="form-group">
                 <label for="order_id">รหัสการสั่งซื้อ</label>
-                <select name="order_id" id="" class="form-control">
+                <select name="order_id" id="" class="form-control"  required>
                 <?php 
                     $order->user_id = $_SESSION['id'];
                     $query_order_result = $order->get_all_order_by_user_id();
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="bank">ธนาคาร</label>
-                <select name="bank" id="" class="form-control">
+                <select name="bank" id="" class="form-control" required>
                     <option value="scb">ไทยพาณิชย์</option>
                     <option value="ktb">กรุงไทย</option>
                     <option value="kbank">กสิกรไทย</option>
@@ -52,11 +52,11 @@
             </div>
             <div class="form-group">
                 <label for="amount">จำนวนเงิน</label>
-                <input type="text" name="amount" class="form-control">
+                <input type="text" name="amount" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="date_transfer">วันเวลาที่โอน</label>
-                <input type="datetime-local" name="date_transfer"  class="form-control">
+                <input type="datetime-local" name="date_transfer"  class="form-control" required>
             </div>
             <button type="submit" name="submit">บันทึก</button>
         </form>

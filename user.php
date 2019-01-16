@@ -113,6 +113,58 @@
 
             return mysqli_num_rows($database->query($sql));
         }
+
+        public static function add_user_login()
+        {
+            global $database;
+
+            $sql  = "INSERT INTO users_logged_in (username, last_update) "; 
+            $sql .= "VALUES ('{$_SESSION['username']}', now())";
+            return $database->query($sql);
+        }
+
+        public static function get_user_logged_in_by_username()
+        {
+            global $database;
+
+            $sql = "SELECT * FROM users_logged_in WHERE username = '{$_SESSION['username']}'";
+            return $database->query($sql);
+        }
+
+        public static function check_if_user_logged_in($username)
+        {
+            global $database;
+
+            $sql = "SELECT * FROM users_logged_in WHERE username = '{$username}'";
+            $result_set = $database->query($sql);
+
+            return mysqli_num_rows($result_set);
+        }
+
+        public static function delete_loggedin_user_when_logout()
+        {
+            global $database;
+
+            $sql = "DELETE FROM users_logged_in WHERE username = '{$_SESSION['username']}'";
+            return $database->query($sql);
+        }
+
+        public static function check_if_user_is_logged_in_in_system()
+        {
+            global $database;
+
+            $sql = "DELETE FROM users_logged_in WHERE username = '{$_SESSION['username']}' AND last_update = DATE_ADD(now(), INTERVAL 30 MINUTE)";
+
+            return $database->query($sql);
+        }
+
+        public static function update_last_update()
+        {
+            global $database;
+
+            $sql = "UPDATE users_logged_in SET last_update = now()  WHERE username = '{$_SESSION['username']}'";
+            return $database->query($sql);
+        }
     }
 
     $user = new User();
